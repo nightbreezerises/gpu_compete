@@ -1,0 +1,22 @@
+# GPU 竞争调度器配置文件
+
+# 调度配置
+check_time: 5  # 调度间隔（秒）
+maximize_resource_utilization: false  # 极限利用资源模式
+
+# GPU 配置
+compete_gpus: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]  # 手动指定的 GPU 列表
+use_all_gpus: true  # 是否自动探测所有 GPU
+
+# 重试配置
+retry_config:
+  max_retry_before_backoff: 3  # 每 3 次重试后进入退避
+  backoff_duration: 600         # 退避时间 10 分钟
+
+# 工作目录配置
+# 支持以下格式：
+# - null: 自动设置为脚本父目录（默认）
+# - "../": 相对于脚本的父目录
+# - "/absolute/path": 绝对路径
+# - "relative/path": 相对于脚本的路径
+work_dir: null  # 默认：脚本父目录

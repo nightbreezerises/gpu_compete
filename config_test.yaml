@@ -1,0 +1,17 @@
+# 测试配置文件 - 验证工作目录路径解析
+
+# 调度配置
+check_time: 5
+maximize_resource_utilization: false
+
+# GPU 配置
+compete_gpus: [0, 1]
+use_all_gpus: true
+
+# 重试配置
+retry_config:
+  max_retry_before_backoff: 3
+  backoff_duration: 600
+
+# 工作目录配置测试
+work_dir: "../"  # 相对路径测试

@@ -1,0 +1,41 @@
+# GPU Competition Command File
+# 格式说明：
+# - 以 # 开头的行为注释
+# - 空行分隔不同任务
+# - 每个任务块格式:
+#     命令1
+#     命令2
+#     ...
+#     队列ID,显存需求(GB)
+#
+# 支持的变量:
+#   {work_dir} - 工作目录
+#   {uni_id} - 唯一标识符（自动生成）
+
+# ============================================================================
+# 测试任务 - 简单的 echo 命令用于验证调度器功能
+# ============================================================================
+
+# 队列1: 测试任务A
+echo "Task A1: Queue 1, started at $(date)"
+sleep 5
+echo "Task A1: completed"
+1,1
+
+# 队列1: 测试任务B（队列1内串行，需等A1完成）
+echo "Task B1: Queue 1, started at $(date)"
+sleep 3
+echo "Task B1: completed"
+1,1
+
+# 队列2: 测试任务C（与队列1并行）
+echo "Task C2: Queue 2, started at $(date)"
+sleep 4
+echo "Task C2: completed"
+2,1
+
+# 队列2: 测试任务D
+echo "Task D2: Queue 2, started at $(date)"
+sleep 2
+echo "Task D2: completed"
+2,1
