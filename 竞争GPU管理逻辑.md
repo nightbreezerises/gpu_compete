@@ -8,7 +8,7 @@
 
 ```
 scripts/compete_gpu_retry/
-├── main.py      # 主调度器
+├── main.py                     # 主调度器
 ├── config.yaml                # 调度器配置文件
 ├── command.txt                # 任务配置文件
 ├── logs/                      # 日志目录（相对于脚本）
@@ -34,6 +34,7 @@ scripts/compete_gpu_retry/
 | `parse_command_file.py` | 命令配置文件解析器 |
 | `config.yaml` | 调度器配置文件，包含所有运行参数 |
 | `command.txt` | 任务配置文件，便于管理和修改 |
+| `command_bk.txt` | 备用任务配置文件，支持优化格式 |
 
 ### 路径配置
 
@@ -167,6 +168,7 @@ config.update('new_key', 'new_value')
 
 #### command.txt 格式说明
 
+**标准格式**：
 ```
 # 注释行（以 # 开头）
 # 空行分隔不同任务
@@ -183,27 +185,45 @@ config.update('new_key', 'new_value')
 队列ID,显存需求(GB)
 ```
 
+**优化格式（command_bk.txt）**：
+```
+# 注释行（以 # 开头）
+# 空行分隔不同任务
+
+# 任务1：队列1
+1 #队列ID
+"rm -rf {work_dir}/experiments/car196/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 8"
+"bash {work_dir}/scripts/run_pipeline.sh car --uni_id {uni_id}"
+20 #剩余显存
+
+# 任务2：队列2
+2
+"rm -rf {work_dir}/experiments/flower102/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 5"
+"bash {work_dir}/scripts/run_pipeline.sh flower --uni_id {uni_id}"
+20
+```
+
 **支持的变量**：
 - `{work_dir}` - 工作目录（脚本父目录）
 - `{uni_id}` - 唯一标识符（自动生成）
 
-**示例**：
-```
-# 汽车数据集任务
-rm -rf {work_dir}/experiments/car196/knowledge_base
-bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 8
-bash {work_dir}/scripts/run_pipeline.sh car --uni_id {uni_id}
-1,20
-```
+**格式特点**：
+- 队列ID在第一行
+- 命令行在中间，可以用引号包围
+- 显存需求在最后一行
+- 数字后可以跟注释（如 `1 #队列ID`）
+- 解析器会自动读取第一个数字作为值
 
 #### parse_command_file.py 模块
 
-负责解析 `command.txt` 文件，将文本格式的任务配置转换为 Python 数据结构。
+负责解析命令配置文件，支持两种格式：
 
 **主要功能**：
 - 解析注释和空行
 - 提取命令列表
-- 解析队列 ID 和显存需求
+- 智能解析队列ID和显存需求（支持数字后注释）
 - 错误处理和日志记录
 
 **使用方式**：
@@ -339,28 +359,47 @@ work_dir: "/home/user/custom_workspace"  # 绝对路径
 # work_dir: null                           # 默认（脚本父目录）
 ```
 
-### 2. 启动调度器
+### 2. 创建任务配置
+
+**使用优化格式（command_bk.txt）**：
+```
+# 汽车数据集任务
+1 #队列1
+"rm -rf {work_dir}/experiments/car196/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 8"
+"bash {work_dir}/scripts/run_pipeline.sh car --uni_id {uni_id}"
+20 #显存需求
+
+# 花卉数据集任务
+2 #队列2
+"rm -rf {work_dir}/experiments/flower102/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 5"
+"bash {work_dir}/scripts/run_pipeline.sh flower --uni_id {uni_id}"
+20 #显存需求
+```
+
+### 3. 启动调度器
 
 ```bash
 cd /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry
-nohup python compete_gpus_retry.py > /dev/null 2>&1 &
+nohup python main.py > /dev/null 2>&1 &
 ```
 
-### 3. 查看日志
+### 4. 查看日志
 
 ```bash
 tail -f logs/compete_gpu.log
 ```
 
-### 4. 查看进程状态
+### 5. 查看进程状态
 
 ```bash
 cat logs/uni_id.json | python -m json.tool
 ```
 
-### 5. 修改任务配置
+### 6. 修改任务配置
 
-编辑 `command.txt` 文件，添加或修改任务块。
+编辑 `command.txt` 或 `command_bk.txt` 文件，添加或修改任务块。
 
 ## 注意事项
 
@@ -368,8 +407,9 @@ cat logs/uni_id.json | python -m json.tool
 2. **配置管理**：通过 `config.yaml` 统一管理配置，避免修改代码
 3. **工作目录**：支持相对路径和绝对路径配置，灵活适应不同部署需求
 4. **GPU 预留**：合理设置 `gpu_left` 避免影响其他用户，通常预留 1-2 张 GPU
-5. **日志管理**：日志文件会自动轮转，避免单个文件过大
-6. **进程清理**：异常退出的进程需要手动清理或等待系统自动清理
-7. **GPU 资源**：确保任务预估的显存需求准确，避免 OOM 错误
-8. **队列设计**：合理设计队列数量和任务分配，避免资源浪费
-9. **YAML 语法**：编辑配置文件时注意 YAML 语法，特别是缩进和引号
+5. **命令格式**：建议使用优化格式（command_bk.txt），队列ID在第一行，命令在中间，显存在最后一行
+6. **日志管理**：日志文件会自动轮转，避免单个文件过大
+7. **进程清理**：异常退出的进程需要手动清理或等待系统自动清理
+8. **GPU 资源**：确保任务预估的显存需求准确，避免 OOM 错误
+9. **队列设计**：合理设计队列数量和任务分配，避免资源浪费
+10. **YAML 语法**：编辑配置文件时注意 YAML 语法，特别是缩进和引号

@@ -13,7 +13,7 @@ def parse_command_file(file_path: str) -> List[Tuple[List[str], int, int]]:
     文件格式：
     - # 开头的行为注释
     - 空行分隔任务
-    - 每个任务块：多行命令 + 最后一行 "队列ID,显存需求"
+    - 每个任务块：队列ID行 + 多行命令 + 显存需求行
     
     Args:
         file_path: 命令配置文件路径
@@ -41,20 +41,42 @@ def parse_command_file(file_path: str) -> List[Tuple[List[str], int, int]]:
         # 过滤注释和空行
         lines = [line for line in lines if line and not line.startswith('#')]
         
-        if len(lines) < 2:
+        if len(lines) < 3:  # 至少需要：队列ID行 + 命令行 + 显存需求行
             continue
         
-        # 最后一行是 "队列ID,显存需求"
-        last_line = lines[-1]
-        commands = lines[:-1]
+        # 第一行是队列ID，最后一行是显存需求，中间是命令
+        queue_id_line = lines[0]
+        memory_line = lines[-1]
+        commands = lines[1:-1]
         
         try:
-            parts = last_line.split(',')
-            queue_id = int(parts[0].strip())
-            memory_gb = int(parts[1].strip()) if len(parts) > 1 else 20
+            # 解析队列ID（读取所有字符串直到第一个数字）
+            queue_id_str = queue_id_line
+            # 找到第一个数字字符的位置
+            for i, char in enumerate(queue_id_str):
+                if char.isdigit():
+                    queue_id_str = queue_id_str[i:]
+                    break
+            # 移除数字后的注释（如果有的话）
+            queue_id_str = queue_id_str.split()[0]  # 只取第一个数字
+            queue_id = int(queue_id_str.strip())
+            
+            # 解析显存需求（读取所有字符串直到第一个数字）
+            memory_str = memory_line
+            # 找到第一个数字字符的位置
+            for i, char in enumerate(memory_str):
+                if char.isdigit():
+                    memory_str = memory_str[i:]
+                    break
+            # 移除数字后的注释（如果有的话）
+            memory_str = memory_str.split()[0]  # 只取第一个数字
+            memory_gb = int(memory_str.strip())
+            
             tasks.append((commands, queue_id, memory_gb))
         except (ValueError, IndexError) as e:
             logging.warning(f"Failed to parse task block: {e}")
+            logging.warning(f"  Queue line: {queue_id_line}")
+            logging.warning(f"  Memory line: {memory_line}")
             continue
     
     return tasks
