@@ -68,6 +68,7 @@ maximize_resource_utilization = config.get('maximize_resource_utilization', Fals
 # GPU 配置
 compete_gpus = config.get('compete_gpus', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])  # 手动指定的 GPU 列表
 use_all_gpus = config.get('use_all_gpus', True)  # 是否自动探测所有 GPU
+gpu_left=config.get('gpu_left', 0)  # 剩余几张卡给其他用户
 
 # 重试配置
 retry_config_dict = config.get('retry_config', {})
@@ -116,10 +117,21 @@ class GPUCompetitor:
         
         # 初始化 GPU 列表
         if use_all_gpus:
-            self.gpus = GPUMonitor.detect_gpus()
+            all_gpus = GPUMonitor.detect_gpus()
         else:
-            self.gpus = compete_gpus
-        logging.info(f"🖥️ Available GPUs: {self.gpus}")
+            all_gpus = compete_gpus
+        
+        # 应用 gpu_left 限制：保留最后 gpu_left 张卡给其他用户
+        if gpu_left > 0 and len(all_gpus) > gpu_left:
+            self.gpus = all_gpus[:-gpu_left]  # 保留前面的卡，预留后面的卡
+            reserved_gpus = all_gpus[-gpu_left:]
+            logging.info(f"🖥️ Available GPUs: {self.gpus} (reserved for others: {reserved_gpus})")
+        else:
+            self.gpus = all_gpus
+            logging.info(f"🖥️ Available GPUs: {self.gpus}")
+        
+        # 保存配置到实例变量
+        self.gpu_left = gpu_left
         
         # 初始化 JSON 管理器
         self.process_json = ProcessJSON(process_json_path)

@@ -2,19 +2,25 @@
 
 ## 概述
 
-为了有效管理多个脚本对GPU资源的竞争使用，我们实现了一个基于唯一标识符（uni_id）的进程管理系统。该系统允许外部监控脚本（如 `compete_gpus_retry.py`）跟踪正在运行的Python进程，并在适当的时机启动新的任务。
+为了有效管理多个脚本对GPU资源的竞争使用，我们实现了一个基于唯一标识符（uni_id）的进程管理系统。该系统允许外部监控脚本（如 `main.py`）跟踪正在运行的Python进程，并在适当的时机启动新的任务。
 
 ## 代码结构（模块化版本）
 
 ```
 scripts/compete_gpu_retry/
-├── compete_gpus_retry.py      # 主调度器
+├── main.py      # 主调度器
+├── config.yaml                # 调度器配置文件
 ├── command.txt                # 任务配置文件
+├── logs/                      # 日志目录（相对于脚本）
+│   ├── compete_gpu*.log      # 调度器日志
+│   └── uni_id.json           # 进程状态记录
 └── utils/
     ├── __init__.py
     ├── gpu_monitor.py         # GPU 状态监控
     ├── process_json.py        # JSON 文件管理
-    └── retry.py               # 重试机制
+    ├── process_yaml.py        # YAML 配置文件管理
+    ├── retry.py               # 重试机制
+    └── parse_command_file.py  # 命令配置文件解析器
 ```
 
 ### 模块说明
@@ -23,9 +29,124 @@ scripts/compete_gpu_retry/
 |------|------|
 | `gpu_monitor.py` | GPU 显存检测、用户进程检测、GPU 列表探测 |
 | `process_json.py` | uni_id.json 文件的读写、进程状态管理 |
+| `process_yaml.py` | YAML 配置文件管理，支持嵌套键访问 |
 | `retry.py` | 重试配置、退避策略、任务状态检查 |
 | `parse_command_file.py` | 命令配置文件解析器 |
+| `config.yaml` | 调度器配置文件，包含所有运行参数 |
 | `command.txt` | 任务配置文件，便于管理和修改 |
+
+### 路径配置
+
+所有路径都相对于脚本位置，便于部署：
+
+- `work_dir`: 脚本父目录，用于命令执行
+- `log_dir`: `./logs`（相对于脚本），存放日志和进程状态文件
+- `process_json_path`: `./logs/uni_id.json`，进程状态记录文件
+- `commands_path`: `./command.txt`，任务配置文件
+- `config_path`: `./config.yaml`，YAML 配置文件
+
+### 配置管理
+
+使用 YAML 文件管理所有配置参数，便于修改和维护：
+
+#### config.yaml 格式
+
+```yaml
+# 调度配置
+check_time: 5  # 调度间隔（秒）
+maximize_resource_utilization: false  # 极限利用资源模式
+
+# GPU 配置
+compete_gpus: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]  # 手动指定的 GPU 列表
+use_all_gpus: true  # 是否自动探测所有 GPU
+gpu_left: 1  # 剩余几张卡给其他用户
+
+# 重试配置
+retry_config:
+  max_retry_before_backoff: 3  # 每 3 次重试后进入退避
+  backoff_duration: 600         # 退避时间 10 分钟
+
+# 工作目录配置
+# 支持以下格式：
+# - null: 自动设置为脚本父目录（默认）
+# - "../": 相对于脚本的父目录
+# - "/absolute/path": 绝对路径
+# - "relative/path": 相对于脚本的路径
+work_dir: null  # 默认：脚本父目录
+```
+
+#### GPU 预留配置详解
+
+`gpu_left` 配置用于预留 GPU 给其他用户：
+
+1. **配置方式**：
+   ```yaml
+   gpu_left: 0   # 不预留，使用所有可用 GPU
+   gpu_left: 1   # 预留 1 张 GPU（通常是最后一张）
+   gpu_left: 2   # 预留 2 张 GPU（通常是最后两张）
+   ```
+
+2. **预留逻辑**：
+   - 当 `use_all_gpus: true` 时，从检测到的所有 GPU 中预留最后 `gpu_left` 张
+   - 当 `use_all_gpus: false` 时，从手动指定的 GPU 列表中预留最后 `gpu_left` 张
+   - 预留的 GPU 不会被调度器使用
+
+3. **示例**：
+   ```yaml
+   # 检测到 10 张 GPU [0,1,2,3,4,5,6,7,8,9]，gpu_left: 1
+   # 可用 GPU: [0,1,2,3,4,5,6,7,8]
+   # 预留 GPU: [9]
+   ```
+
+#### 工作目录配置详解
+
+工作目录 `work_dir` 支持多种配置方式：
+
+1. **默认配置（null）**：
+   ```yaml
+   work_dir: null
+   ```
+   自动设置为脚本父目录
+
+2. **相对路径**：
+   ```yaml
+   work_dir: "../"        # 脚本父目录
+   work_dir: "../../"     # 脚本祖父目录
+   work_dir: "work"       # 脚本同级的 work 目录
+   ```
+   相对于脚本位置解析
+
+3. **绝对路径**：
+   ```yaml
+   work_dir: "/home/user/project"
+   work_dir: "/tmp/workspace"
+   ```
+   直接使用绝对路径
+
+#### process_yaml.py 模块
+
+负责加载和管理 YAML 配置文件：
+
+**主要功能**：
+- 安全加载 YAML 文件
+- 支持嵌套键访问（如 `retry_config.max_retry_before_backoff`）
+- 提供默认值支持
+- 内存中配置更新
+
+**使用方式**：
+```python
+from utils import ProcessYAML
+
+# 加载配置
+config = ProcessYAML('config.yaml')
+
+# 获取配置项
+check_time = config.get('check_time', 5)
+retry_count = config.get('retry_config.max_retry_before_backoff', 3)
+
+# 更新配置（内存中）
+config.update('new_key', 'new_value')
+```
 
 ## 代码核心逻辑
 
@@ -35,8 +156,9 @@ scripts/compete_gpu_retry/
 - **队列间并行**：不同队列的任务可以同时在不同 GPU 上执行
 - **顺序分配**：每次只分配一个任务，等待进程确认启动后（30秒延迟）再分配下一个，避免 GPU 进程未及时显示导致重复分配
 - **重试机制**：进程发生异常后要进行重试，重试超上限（3次）后退避一段时间（10分钟）再进行下一次重试
+- **GPU 预留**：根据配置预留指定数量的 GPU 给其他用户使用
 
-整体流程：**任务配置 → 队列分组 → 空闲队列头任务随机调度 → 逐个分配 GPU → 等待进程确认 → 状态监控**。
+整体流程：**任务配置 → 队列分组 → GPU 预留处理 → 空闲队列头任务随机调度 → 逐个分配 GPU → 等待进程确认 → 状态监控**。
 
 ### 1. 任务与队列
 
@@ -62,7 +184,7 @@ scripts/compete_gpu_retry/
 ```
 
 **支持的变量**：
-- `{work_dir}` - 工作目录
+- `{work_dir}` - 工作目录（脚本父目录）
 - `{uni_id}` - 唯一标识符（自动生成）
 
 **示例**：
@@ -91,6 +213,7 @@ from utils import parse_command_file
 tasks = parse_command_file('command.txt')
 # 返回: List[(commands, queue_id, memory_gb)]
 ```
+
 3. 根据队列 ID 将任务分组：
    - **同一队列内**：严格按顺序执行（队列内串行）
    - **不同队列之间**：可同时调度（队列间并行）
@@ -101,492 +224,152 @@ tasks = parse_command_file('command.txt')
    - `use_all_gpus=True`：自动探测所有可用 GPU
    - `use_all_gpus=False`：使用 `compete_gpus` 指定的 GPU 列表
 
-5. **调度核心算法**（`run` 方法）：
-   ```
-   while 有待执行任务:
-       1. 获取当前忙碌队列（通过 JSON 中 state=running 的进程）
-       2. 获取所有空闲队列的头部任务
-       3. 随机打乱任务顺序（公平调度）
-       4. 逐个分配任务：
-          a. 查找可用 GPU（显存足够 + 非极限模式下无用户进程）
-          b. 执行任务命令
-          c. 等待进程确认启动（检查 JSON 中的 PID）
-          d. 等待 30 秒再分配下一个任务
-       5. 打印状态，等待下一轮调度
-   ```
+5. **GPU 预留处理**：
+   - 根据 `gpu_left` 配置预留 GPU
+   - 预留的 GPU 不会被调度器使用
+   - 通常预留最后几张 GPU（编号较大的）
 
-6. **关键约束**：
-   - 非极限模式下，每个 GPU 同时只允许一个当前用户的 Python 进程
-   - 每次分配后等待 30 秒，确保 GPU 进程已显示在 nvidia-smi 中
-   - 通过 `uni_id.json` 追踪进程状态，而非仅依赖内存中的任务状态
+6. **GPU 可用性检查**（`find_available_gpu`）：
+   - **显存检查**：确保有足够的可用显存（`required_memory`）
+   - **用户进程检查**（非极限模式）：确保当前用户没有其他 Python 进程在该 GPU 上
 
-### 2.5 进程状态与重试机制（compete_gpus_retry）
+7. **任务执行**（`execute_task`）：
+   - 设置 `CUDA_VISIBLE_DEVICES={gpu_id}` 环境变量
+   - 串行执行任务的所有命令
+   - 更新任务状态为 "running"
+   - 记录 PID 到 `uni_id.json`
 
-7. 在原有 `uni_id → PID` 映射的基础上，JSON 中为每个条目新增关键字段：
-   - `state`：记录进程运行状态，可取值：
-     - `running`：进程已启动且仍在运行中；
-     - `normal_exit`：进程正常退出（返回码为 0）；
-     - `abnormal_exit`：进程异常退出（返回码非 0，或被信号终止）；
-   - `retry_count`：记录当前任务的重试次数（从 0 开始计数）；
-   - `error_type`：当 `state=abnormal_exit` 时记录异常类型（例如 `oom` 表示显存溢出，`runtime_error` 等）。
+8. **进程启动确认**（`wait_for_process_start`）：
+   - 等待最多 60 秒，直到 JSON 中出现有效的 PID
+   - 通过 `psutil.pid_exists(pid)` 确认进程真实存在
 
-8. `compete_gpus_retry.py` 作为带重试功能的竞争脚本，会周期性扫描 JSON 并执行**无限重试 + 退避机制**：
-   - 对于 `state=abnormal_exit` 的任务：
-     - 将 `retry_count` 加 1；
-     - 如果 `retry_count` 是 3 的倍数（即 3、6、9…），则进入**退避等待 10 分钟**，期间该任务不会被重新提交到队列；
-     - 退避结束后，重新将同一任务提交到队列，触发重试；
-   - 对于 `state=normal_exit` 的任务，认为生命周期已完成，可以安全地从 JSON 中清理对应的 `uni_id` 记录；
-   - 对于 `state=running` 的任务，仅用于监控，不触发重试也不清理。
+### 3. 进程状态与重试机制
 
-9. **重试与队列串行的关系**：
-   - 重试行为**不会破坏队列内串行约束**：一个任务（包括其所有重试）必须成功运行（`normal_exit`）后，同一队列的后续任务才能被调度；
-   - 在任务重试期间（包括退避等待），该队列被视为"忙碌"，后续任务继续 `pending`；
-   - 只有当任务最终 `normal_exit` 时，队列状态才会从"忙碌"变为"空闲"。
+9. **进程状态跟踪**（`uni_id.json`）：
+   - 外部脚本（如 `run_pipeline.sh`）启动后会写入：
+     ```json
+     {
+       "uni_id": {
+         "pid": 12345,
+         "state": "running",
+         "retry_count": 0
+       }
+     }
+     ```
+   - 进程正常退出时，外部脚本更新为 `state: "normal_exit"`
+   - 进程异常退出时，外部脚本更新为 `state: "abnormal_exit"` 和 `error_type`
 
-10. **uni_id 清理策略**：
-    - `normal_exit`：清理 JSON 中对应的 `uni_id`，释放管理负担；
-    - `abnormal_exit`：保留记录、`error_type` 和 `retry_count`，便于无限重试与排障。
+10. **重试机制**（`check_and_handle_finished_tasks`）：
+    - 检测到 `abnormal_exit` 状态时：
+      - 将任务状态重置为 "pending"
+      - 增加 `retry_count`
+      - 根据重试次数决定是否需要退避
+      - 生成新的 `uni_id` 用于重试
+    - 退避策略：每 3 次重试后退避 10 分钟
 
-### 3. 队列推进与状态监控
+### 4. 队列推进与状态监控
 
-11. 随着任务执行结束或失败，`CommandTask` 的状态从 `running` 更新为 `completed/failed`，其所属队列从"忙碌"变为空闲：
-    - 同一队列的下一个 `pending` 任务会在下一轮调度中被选中继续执行；
-    - 其他队列如果也空闲且有 GPU 可用，会并行被调度。
+11. **忙碌队列检测**（`get_busy_queues`）：
+    - 通过 JSON 中 `state=running` 且进程确实存在的记录
+    - 返回当前正在执行任务的队列 ID 集合
 
-12. 日志系统会定期打印：
-    - 任务总体统计（Pending/Running/Completed/Failed）；
-    - 各队列 Busy/Idle 状态（包括从 JSON 检测到的实际运行进程）；
-    - 每块 GPU 的可用显存、用户进程数和运行任务数；
-    - 从 JSON 中读取的实际运行进程列表。
+12. **任务调度**（`run` 主循环）：
+    - 获取所有空闲队列的头部任务
+    - 随机打乱顺序（公平调度）
+    - 逐个分配到可用 GPU
+    - 每分配一个任务后等待 30 秒再分配下一个
 
-## 调度示例
+13. **状态监控**（`print_status`）：
+    - 显示各队列的忙碌/空闲状态
+    - 统计 pending/running/completed/failed 任务数量
 
-### 示例场景
+## 重试机制详解
 
-假设有 **2 张可用 GPU**（GPU 4 和 GPU 7），以及 **3 个队列**共 6 个任务：
+### 重试触发条件
 
-| 队列 | 任务 | 说明 |
-|------|------|------|
-| 队列 1 | a → b | 汽车数据集，经验数 8 和 5 |
-| 队列 2 | c → d → e | 花数据集，经验数 15、5、3 |
-| 队列 3 | f | 鸟数据集，经验数 50 |
+1. **Python 进程异常退出**：
+   - 外部脚本检测到非零退出码
+   - 在 `uni_id.json` 中设置 `state: "abnormal_exit"`
+   - 可选设置 `error_type`（如 "oom", "runtime_error"）
 
-### 调度过程（顺序分配）
+2. **重试处理流程**：
+   - 调度器检测到 `abnormal_exit` 状态
+   - 将任务重置为 "pending" 状态
+   - 增加 `retry_count`
+   - 根据重试次数决定是否退避
+   - 生成新的 `uni_id`
 
-**第 1 轮调度**：
-- 空闲队列：{1, 2, 3}，头部任务：{a, c, f}
-- 随机打乱后假设顺序为：[f, a, c]
-- **逐个分配**：
-  1. 分配 f → GPU 4，等待进程确认（检查 JSON 中 PID 有效）
-  2. 等待 30 秒
-  3. 分配 a → GPU 7，等待进程确认
-  4. 等待 30 秒
-  5. 尝试分配 c，但无可用 GPU（GPU 4 和 7 都有用户进程）
-- 队列状态：队列 1 🔴 BUSY，队列 2 🟢 IDLE，队列 3 🔴 BUSY
+3. **退避策略**：
+   - 每 3 次重试后进入退避期
+   - 退避时间：10 分钟
+   - 退避期间任务不会被调度
 
-**第 2 轮调度**（f 完成后）：
-- 空闲队列：{2, 3}（队列 1 的 a 仍在运行）
-- 头部任务：{c}（队列 3 已无任务）
-- 分配 c → GPU 4，等待进程确认
-- 队列状态：队列 1 🔴 BUSY，队列 2 🔴 BUSY，队列 3 🟢 IDLE
-
-**第 3 轮调度**（a 和 c 都完成后）：
-- 空闲队列：{1, 2}
-- 头部任务：{b, d}
-- 随机打乱后假设顺序为：[d, b]
-- **逐个分配**：
-  1. 分配 d → GPU 4，等待进程确认
-  2. 等待 30 秒
-  3. 分配 b → GPU 7，等待进程确认
-- 队列状态：队列 1 🔴 BUSY，队列 2 🔴 BUSY，队列 3 🟢 IDLE
-
-**第 4 轮调度**（b 完成后）：
-- 空闲队列：{1}（队列 2 的 d 仍在运行）
-- 队列 1 已无任务，无新任务可调度
-
-**第 5 轮调度**（d 完成后）：
-- 空闲队列：{2}
-- 头部任务：{e}
-- 分配 e → GPU 4 或 GPU 7
-
-**最终**：所有任务完成。
-
-### 关键特性
-
-1. **队列内严格串行**：队列 1 的 b 必须等 a 完成后才能执行
-2. **队列间并行**：a 和 f 可以同时在不同 GPU 上执行
-3. **顺序分配**：每次只分配一个任务，等待 30 秒确认进程启动后再分配下一个
-4. **进程确认**：通过检查 JSON 中的 PID 是否有效来确认进程已启动
-5. **GPU 独占**：非极限模式下，每个 GPU 同时只运行一个当前用户的进程
-6. **动态分配**：任务不预先绑定 GPU，运行时根据资源情况动态分配
-
-## 核心组件
-
-### 1. 唯一标识符参数
-
-所有主要脚本都支持 `--uni_id` 参数：
-- `run_pipeline.sh`
-- `run_build_knowledge_base.sh`
-- `run_discovery.sh`
-- `run_fast_slow.sh`
-
-使用示例：
-```bash
-### 2. 进程状态管理
-
-#### JSON文件结构
-进程状态保存在 `./script_process/uni_id.json` 文件中，每个 `uni_id` 对应一个**记录字典**：
-
-```json
-{
-  "exp001": {
-    "pid": 12345,
-    "state": "running",
-    "retry_count": 0,
-    "error_type": "runtime_error"
-  },
-  "exp002": {
-    "pid": 12346,
-    "state": "normal_exit",
-    "retry_count": 3
-  }
-}
-```
-
-#### 字段说明
-- **键**: 唯一标识符（uni_id）
-- **值**: 记录字典，包含：
-  - `pid`: 进程 ID（整数）；
-  - `state`: 进程状态，`running` / `normal_exit` / `abnormal_exit`；
-  - `retry_count`: 当前已重试次数（整数，默认 0）；
-  - `error_type`: 可选字段，仅在 `abnormal_exit` 时存在，例如 `oom` / `runtime_error` / `unknown`。
-
-如果 JSON 文件丢失、为空或内容损坏（无法解析 / 不是字典），`compete_gpus_retry.py` 会自动将其重置为 `{}` 并在日志中给出警告，而不会影响主循环逻辑，从而保证系统在人工误删或编辑错误后仍能自动恢复。
-
-### 3. 脚本行为模式
-
-#### 标准模式（无 --uni_id）
-- 脚本按原有逻辑运行
-- 后台启动Python进程
-- 显示进程PID和日志信息
-- 不更新JSON文件
-
-#### 管理模式（有 --uni_id）
-- 脚本启动时在JSON中记录 uni_id 到 PID 的映射
-- Python进程在后台运行
-- 脚本等待进程结束（使用 `wait` 命令）
-- 进程结束后JSON记录保持不变（PID可用于检查进程状态）
-
-## 实现细节
-
-### 1. 支持的脚本类型
-
-系统支持两种类型的脚本：
-
-#### Bash 脚本（间接启动 Python）
-- `run_pipeline.sh`、`run_build_knowledge_base.sh`、`run_discovery.sh`、`run_fast_slow.sh`
-- Bash 脚本负责在 JSON 中注册 Python 进程的 PID
-- 通过 `wait` 命令等待 Python 进程结束，并根据退出码更新状态
-- 通过检查日志文件判断错误类型（OOM、RuntimeError 等）
-
-#### Python 脚本（直接运行）
-- `compete_gpus_retry.py` 可以直接启动 Python 脚本
-- 直接获取 Python 进程的 PID 和异常信息
-- 更简单的错误处理流程
-
-### 2. JSON 文件管理
-
-每个脚本都包含健壮的 JSON 管理逻辑：
-
-```bash
-# 进程管理目录和文件路径（始终定义）
-PROCESS_DIR="${SCRIPT_DIR}/script_process"
-UNI_ID_FILE="${PROCESS_DIR}/uni_id.json"
-
-# 更新 uni_id 状态的函数（始终定义，供后续使用）
-update_uni_id_status() {
-    local uni_id=$1
-    local state=$2
-    local pid=$3
-    local error_type=$4
-    
-    # 确保目录和文件存在
-    mkdir -p "${PROCESS_DIR}"
-    if [ ! -f "${UNI_ID_FILE}" ]; then
-        echo "{}" > "${UNI_ID_FILE}"
-    fi
-    
-    # 使用 Python 更新 JSON（处理各种边界情况）
-    python3 -c "
-import json, os, sys
-
-# 安全加载 JSON
-try:
-    if os.path.exists('${UNI_ID_FILE}'):
-        with open('${UNI_ID_FILE}', 'r') as f:
-            content = f.read().strip()
-            data = json.loads(content) if content else {}
-            if not isinstance(data, dict):
-                data = {}
-    else:
-        data = {}
-except:
-    data = {}
-
-# 更新记录
-if '${uni_id}' not in data:
-    data['${uni_id}'] = {}
-record = data['${uni_id}']
-record['pid'] = int('${pid}') if '${pid}' else 0
-record['state'] = '${state}'
-record['retry_count'] = record.get('retry_count', 0)
-
-# 设置错误类型
-if '${error_type}' and '${error_type}' != 'none':
-    record['error_type'] = '${error_type}'
-elif 'error_type' in record and '${state}' == 'normal_exit':
-    del record['error_type']
-
-# 安全写入
-with open('${UNI_ID_FILE}', 'w') as f:
-    json.dump(data, f, indent=2)
-"
-}
-```
-
-### 3. 错误类型检测
-
-Bash 脚本通过检查日志文件判断错误类型：
-
-```bash
-if [ ${EXIT_CODE} -ne 0 ]; then
-    if grep -i "out of memory\|cuda out of memory\|oom" "${LOG_FILE}" >/dev/null 2>&1; then
-        ERROR_TYPE="oom"
-    elif grep -i "RuntimeError\|runtime error" "${LOG_FILE}" >/dev/null 2>&1; then
-        ERROR_TYPE="runtime_error"
-    else
-        ERROR_TYPE="unknown"
-    fi
-    update_uni_id_status "${UNI_ID}" "abnormal_exit" "${PY_PID}" "${ERROR_TYPE}"
-else
-    update_uni_id_status "${UNI_ID}" "normal_exit" "${PY_PID}" "none"
-fi
-```
-
-### 3. 进程启动和跟踪
-
-```bash
-if [ -n "${UNI_ID}" ]; then
-    # 管理模式
-    python discovering.py ... &
-    PY_PID=$!
-    
-    # 记录 uni_id 到 PID 的映射
-    python -c "
-import json
-import os
-
-uni_id_file = '${SCRIPT_DIR}/script_process/uni_id.json'
-os.makedirs(os.path.dirname(uni_id_file), exist_ok=True)
-
-try:
-    with open(uni_id_file, 'r') as f:
-        data = json.load(f)
-except:
-    data = {}
-
-data['${UNI_ID}'] = ${PY_PID}
-
-with open(uni_id_file, 'w') as f:
-    json.dump(data, f, indent=2)
-"
-    
-    wait ${PY_PID}
-else
-    # 标准模式
-    python discovering.py ... &
-    PID=$!
-    # 原有逻辑
-fi
-```
-
-## 外部监控接口
-
-### compete_gpu.py 的使用方式
-
-`compete_gpu.py` 脚本可以通过以下方式监控进程状态：
+### 重试配置
 
 ```python
-import json
-import os
-
-def get_all_processes():
-    """获取所有记录的进程"""
-    uni_id_file = "./script_process/uni_id.json"
-    
-    if not os.path.exists(uni_id_file):
-        return {}
-    
-    with open(uni_id_file, 'r') as f:
-        data = json.load(f)
-    
-    return data
-
-def get_running_processes():
-    """获取所有正在运行的进程"""
-    all_processes = get_all_processes()
-    running = {}
-    
-    for uni_id, pid in all_processes.items():
-        try:
-            # 检查进程是否存在
-            os.kill(pid, 0)
-            running[uni_id] = pid
-        except OSError:
-            # 进程不存在，可以选择清理记录
-            pass
-    
-    return running
-
-def is_process_running(uni_id):
-    """检查特定uni_id的进程是否在运行"""
-    all_processes = get_all_processes()
-    
-    if uni_id not in all_processes:
-        return False
-    
-    try:
-        os.kill(all_processes[uni_id], 0)
-        return True
-    except OSError:
-        return False
-
-def wait_for_completion(uni_id, check_interval=10):
-    """等待特定uni_id的进程完成"""
-    while is_process_running(uni_id):
-        time.sleep(check_interval)
+retry_config = RetryConfig(
+    max_retry_before_backoff=3,  # 每 3 次重试后进入退避
+    backoff_duration=600         # 退避时间 10 分钟
+)
 ```
 
-## 使用场景
+## 使用示例
 
-### 1. 队列串行执行
+### 1. 配置调度器
 
-```python
-# compete_gpu.py 中的三元组配置
-command_tasks = [
-    # 队列1：汽车数据集任务（串行执行）
-    (["rm -rf experiments/car196/knowledge_base", "bash set_hyperparameters.sh --experience_number 8", "CUDA_VISIBLE_DEVICES={available_gpu} bash run_pipeline.sh car --uni_id {uni_id}"], 1, 25),
-    (["rm -rf experiments/car196/knowledge_base", "bash set_hyperparameters.sh --experience_number 5", "CUDA_VISIBLE_DEVICES={available_gpu} bash run_pipeline.sh car --uni_id {uni_id}"], 1, 25),
-    
-    # 队列2：花数据集任务（串行执行）
-    (["rm -rf experiments/flower102/knowledge_base", "bash set_hyperparameters.sh --experience_number 15", "CUDA_VISIBLE_DEVICES={available_gpu} bash run_pipeline.sh flower --uni_id {uni_id}"], 2, 25),
-    (["rm -rf experiments/flower102/knowledge_base", "bash set_hyperparameters.sh --experience_number 5", "CUDA_VISIBLE_DEVICES={available_gpu} bash run_pipeline.sh flower --uni_id {uni_id}"], 2, 25),
-    
-    # 队列3：鸟数据集任务（串行执行）
-    (["rm -rf experiments/bird200/knowledge_base", "bash set_hyperparameters.sh --experience_number 50", "CUDA_VISIBLE_DEVICES={available_gpu} bash run_pipeline.sh bird --uni_id {uni_id}"], 3, 25),
-]
+编辑 `config.yaml` 文件调整参数：
+```yaml
+# 修改调度间隔
+check_time: 10
+
+# 修改 GPU 列表
+compete_gpus: [0, 1, 2, 3]
+
+# 预留 GPU 给其他用户
+gpu_left: 2  # 预留最后 2 张 GPU
+
+# 修改重试配置
+retry_config:
+  max_retry_before_backoff: 5
+  backoff_duration: 1200  # 20 分钟
+
+# 设置工作目录
+work_dir: "/home/user/custom_workspace"  # 绝对路径
+# work_dir: "../"                          # 相对路径
+# work_dir: null                           # 默认（脚本父目录）
 ```
 
-### 2. 队列并行执行
+### 2. 启动调度器
 
-- **同一队列内**：任务按顺序串行执行（前一个任务完成后才执行下一个）
-- **不同队列间**：任务可以并行执行（只要GPU资源充足）
-- **GPU分配**：动态分配可用GPU，不固定队列与GPU的对应关系
-
-### 3. 执行流程
-
-```python
-# 队列状态监控
-queue_status = get_queue_status()  # 获取当前运行中的队列
-can_start = can_start_task(task, queue_status)  # 检查任务是否可以开始
-
-# 串行执行逻辑
-if task.queue_id not in running_queues:
-    # 分配GPU并执行任务
-    available_gpu = find_available_gpu(task)
-    if available_gpu:
-        execute_task(task, available_gpu)
+```bash
+cd /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry
+nohup python compete_gpus_retry.py > /dev/null 2>&1 &
 ```
 
-### 4. 状态监控
+### 3. 查看日志
 
-```python
-# 队列状态显示
-Queue 1: 🔴 BUSY, Pending=3, Running=1, Completed=2, Failed=0
-Queue 2: 🟢 IDLE, Pending=2, Running=0, Completed=0, Failed=0
-Queue 3: 🟢 IDLE, Pending=1, Running=0, Completed=0, Failed=0
-
-# GPU状态显示
-GPU 1: Available=15.2GB, User Python Processes=1, Running Tasks=1
-  Running Task (Queue 1): bash run_pipeline.sh car --uni_id abc123...
+```bash
+tail -f logs/compete_gpu.log
 ```
+
+### 4. 查看进程状态
+
+```bash
+cat logs/uni_id.json | python -m json.tool
+```
+
+### 5. 修改任务配置
+
+编辑 `command.txt` 文件，添加或修改任务块。
 
 ## 注意事项
 
-1. **文件权限**: 确保 `script_process` 目录有写权限
-2. **进程清理**: 如果脚本异常退出，可能需要手动清理JSON中的僵尸记录
-3. **并发安全**: 多个脚本同时更新JSON文件时可能存在竞争条件
-4. **PID重用**: 系统PID可能重用，需要结合进程状态检查
-5. **队列约束**: 同一队列的任务严格串行执行，确保资源不冲突
-6. **GPU分配**: GPU动态分配，不固定队列与GPU的对应关系
-7. **任务顺序**: 同一队列内任务按配置顺序执行，不可插队
-
-## 队列管理特性
-
-### 串行执行保证
-- 同一队列ID的任务严格按顺序执行
-- 前一个任务完成后，下一个任务才能开始
-- 通过PID监控确保任务真正结束
-
-### 并行执行支持
-- 不同队列的任务可以并行执行
-- 只要GPU资源充足，支持多队列同时运行
-- 动态GPU分配最大化资源利用率
-
-### 状态监控
-- 实时显示队列状态（BUSY/IDLE）
-- 详细的任务执行统计
-- GPU使用情况实时监控
-
-## 故障排除
-
-### 1. JSON文件损坏
-```bash
-rm -f ./script_process/uni_id.json
-# 脚本会自动重新创建
-```
-
-### 2. 僵尸进程记录
-手动检查并清理：
-```bash
-python -c "
-import json
-import os
-
-with open('./script_process/uni_id.json', 'r') as f:
-    data = json.load(f)
-
-for uni_id, info in list(data.items()):
-    if info.get('running', False):
-        try:
-            os.kill(info['pid'], 0)
-        except OSError:
-            del data[uni_id]
-
-with open('./script_process/uni_id.json', 'w') as f:
-    json.dump(data, f, indent=2)
-"
-```
-
-## 扩展性
-
-该系统设计为可扩展的，未来可以添加：
-- 进程优先级管理
-- GPU使用率监控
-- 自动任务调度
-- 进程超时处理
-- 更详细的进程状态信息
-
----
-
-*该文档描述了当前实现的进程管理机制，为 `compete_gpu.py` 提供了监控和控制接口。*
+1. **路径独立性**：所有路径相对于脚本位置，便于部署到不同环境
+2. **配置管理**：通过 `config.yaml` 统一管理配置，避免修改代码
+3. **工作目录**：支持相对路径和绝对路径配置，灵活适应不同部署需求
+4. **GPU 预留**：合理设置 `gpu_left` 避免影响其他用户，通常预留 1-2 张 GPU
+5. **日志管理**：日志文件会自动轮转，避免单个文件过大
+6. **进程清理**：异常退出的进程需要手动清理或等待系统自动清理
+7. **GPU 资源**：确保任务预估的显存需求准确，避免 OOM 错误
+8. **队列设计**：合理设计队列数量和任务分配，避免资源浪费
+9. **YAML 语法**：编辑配置文件时注意 YAML 语法，特别是缩进和引号

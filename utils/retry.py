@@ -17,7 +17,7 @@ class RetryConfig:
 
 def generate_uni_id() -> str:
     """生成唯一标识符"""
-    return f"compete_{random.randint(100000, 999999)}"
+    return f"compete_{random.randint(1000000, 9999999)}"
 
 
 def is_task_ready(task, current_time: float = None) -> bool:
