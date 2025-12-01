@@ -1,921 +1,200 @@
-2025-12-02 01:06:56,118 - __main__ - INFO - 配置编辑器启动 - 目标文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
-2025-12-02 01:06:56,119 - __main__ - INFO - 服务端口: 29214, 绑定地址: 0.0.0.0
-2025-12-02 01:06:56,119 - utils.manage_port - INFO - 使用配置端口: 29214
-/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/src/main.py:122: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+2025-12-02 03:02:36,823 - __main__ - INFO - 配置编辑器启动 - 目标文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:02:36,823 - __main__ - INFO - 服务端口: 29214, 绑定地址: 0.0.0.0
+2025-12-02 03:02:36,823 - utils.manage_port - INFO - 使用配置端口: 29214
+/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/src/main.py:110: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
   class ConfigModel(BaseModel):
 /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/env/lib/python3.13/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
   warnings.warn(message, UserWarning)
 ✅ 端口 29214 可用，服务启动中...
-2025-12-02 01:06:56,153 - utils.manage_port - INFO - 进程信息已注册: PID=3342513, Port=29214, URL=http://10.82.1.223:29214
-INFO:     Started server process [3342513]
+2025-12-02 03:02:36,858 - utils.manage_port - INFO - 进程信息已注册: PID=3436049, Port=29214, URL=http://10.82.1.223:29214
+INFO:     Started server process [3436049]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:29214 (Press CTRL+C to quit)
-INFO:     10.87.5.130:63053 - "GET / HTTP/1.1" 200 OK
-2025-12-02 01:06:57,169 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:63053 - "GET /assets/index-DqiOnWqh.js HTTP/1.1" 200 OK
-INFO:     10.87.5.130:63056 - "GET /assets/index-BpHilsUZ.css HTTP/1.1" 200 OK
-2025-12-02 01:07:01,220 - __main__ - INFO - 收到获取配置请求
-2025-12-02 01:07:01,220 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
-2025-12-02 01:07:01,226 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
-2025-12-02 01:07:01,227 - __main__ - INFO - 成功获取配置数据
-INFO:     10.87.5.130:63089 - "GET /api/config HTTP/1.1" 200 OK
-2025-12-02 01:07:01,238 - __main__ - INFO - 收到获取 GPU 信息请求
-2025-12-02 01:07:01,247 - __main__ - INFO - 收到获取配置请求
-2025-12-02 01:07:01,247 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
-2025-12-02 01:07:01,252 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
-2025-12-02 01:07:01,252 - __main__ - INFO - 成功获取配置数据
-INFO:     10.87.5.130:63091 - "GET /api/config HTTP/1.1" 200 OK
-INFO:     10.87.5.130:63089 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:07:01,418 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:63091 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:07:02,265 - __main__ - INFO - 收到获取 GPU 信息请求
-2025-12-02 01:07:02,277 - __main__ - INFO - 收到获取命令配置请求，模式: single
-2025-12-02 01:07:02,278 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
-2025-12-02 01:07:02,278 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
-2025-12-02 01:07:02,279 - column.config_command - INFO - 成功加载 6 个队列配置
-INFO:     10.87.5.130:63089 - "GET /api/commands/single HTTP/1.1" 200 OK
-INFO:     10.87.5.130:63091 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:07:03,846 - __main__ - INFO - 收到获取系统设置请求
-2025-12-02 01:07:03,846 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
-2025-12-02 01:07:03,850 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
-INFO:     10.87.5.130:63091 - "GET /api/settings HTTP/1.1" 200 OK
-2025-12-02 01:07:07,057 - __main__ - INFO - 收到获取系统设置请求
-2025-12-02 01:07:07,057 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
-2025-12-02 01:07:07,060 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
-INFO:     10.87.5.130:63117 - "GET /api/settings HTTP/1.1" 200 OK
-2025-12-02 01:07:48,469 - __main__ - INFO - 收到获取系统设置请求
-2025-12-02 01:07:48,470 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
-2025-12-02 01:07:48,473 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
-INFO:     10.87.5.130:63259 - "GET /api/settings HTTP/1.1" 200 OK
-2025-12-02 01:07:49,348 - __main__ - INFO - 收到获取命令配置请求，模式: single
-2025-12-02 01:07:49,348 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
-2025-12-02 01:07:49,349 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
-2025-12-02 01:07:49,349 - column.config_command - INFO - 成功加载 6 个队列配置
-INFO:     10.87.5.130:63262 - "GET /api/commands/single HTTP/1.1" 200 OK
-2025-12-02 01:07:50,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:63262 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:07:51,128 - __main__ - INFO - 收到获取命令配置请求，模式: single
-2025-12-02 01:07:51,128 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
-2025-12-02 01:07:51,129 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
-2025-12-02 01:07:51,129 - column.config_command - INFO - 成功加载 6 个队列配置
-INFO:     10.87.5.130:63262 - "GET /api/commands/single HTTP/1.1" 200 OK
-2025-12-02 01:07:52,166 - __main__ - INFO - 收到获取系统设置请求
-2025-12-02 01:07:52,166 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
-2025-12-02 01:07:52,169 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
-INFO:     10.87.5.130:63262 - "GET /api/settings HTTP/1.1" 200 OK
-2025-12-02 01:11:22,454 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64242 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:23,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64242 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:24,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64246 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:25,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64246 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:26,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64246 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:27,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64246 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:28,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64246 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:29,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64270 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:30,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64270 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:31,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64270 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:32,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64270 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:33,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64270 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:34,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64279 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:35,460 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64279 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:36,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64279 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:37,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64279 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:38,455 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64279 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:39,453 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64311 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:40,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64311 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:41,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64311 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:42,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64311 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:43,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64311 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:44,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64328 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:45,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64328 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:46,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64328 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:47,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64328 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:48,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64328 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:49,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64339 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:50,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64339 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:51,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64339 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:52,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64339 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:53,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64339 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:54,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64355 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:55,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64355 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:56,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64355 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:57,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64355 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:58,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64355 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:11:59,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64366 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:00,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64366 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:01,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64366 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:02,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64366 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:03,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64366 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:04,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64396 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:05,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64396 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:06,442 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64396 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:07,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64396 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:08,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64396 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:09,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:10,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:11,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:12,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:13,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:14,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64421 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:15,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64421 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:16,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64421 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:17,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64421 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:18,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64421 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:19,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64437 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:20,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64437 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:21,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64437 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:22,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64437 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:23,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64437 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:24,456 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64455 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:25,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64455 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:26,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64455 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:27,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64455 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:28,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64455 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:29,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64474 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:30,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64474 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:31,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64474 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:32,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64474 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:33,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64474 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:34,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64487 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:35,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64487 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:36,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64487 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:37,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64487 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:38,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64487 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:39,456 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64496 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:40,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64496 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:41,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64496 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:42,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64496 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:43,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64496 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:44,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64505 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:45,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64505 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:46,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64505 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:47,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64505 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:48,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64505 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:49,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64524 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:50,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64524 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:51,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64524 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:52,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64524 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:53,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64524 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:54,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64541 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:55,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64541 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:56,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64541 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:57,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64541 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:58,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64541 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:12:59,454 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64556 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:00,442 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64556 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:01,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64556 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:02,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64556 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:03,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64556 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:04,456 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64572 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:05,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64572 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:06,442 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64572 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:07,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64572 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:08,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64572 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:09,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64586 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:10,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64586 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:11,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64586 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:12,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64586 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:13,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64586 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:14,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64599 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:15,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64599 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:16,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64599 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:17,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64599 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:18,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64599 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:19,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:20,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:21,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:22,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:23,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:24,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64631 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:25,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64631 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:26,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64631 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:27,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64631 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:28,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64631 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:29,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64650 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:30,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64650 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:31,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64650 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:32,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64650 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:33,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64650 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:34,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64663 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:35,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64663 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:36,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64663 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:37,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64663 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:38,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64663 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:39,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64672 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:40,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64672 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:41,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64672 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:42,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64672 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:43,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64672 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:44,456 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64683 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:45,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64683 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:46,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64683 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:47,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64683 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:48,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64683 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:49,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64703 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:50,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64703 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:51,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64703 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:52,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64703 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:53,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64703 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:54,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64723 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:55,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64723 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:56,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64723 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:57,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64723 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:58,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64723 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:13:59,453 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64746 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:00,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64746 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:01,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64746 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:02,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64746 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:03,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64746 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:04,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64776 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:05,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64776 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:06,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64776 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:07,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64776 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:08,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64776 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:09,454 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64785 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:10,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64785 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:11,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64785 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:12,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64785 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:13,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64785 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:14,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64799 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:15,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64799 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:16,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64799 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:17,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64799 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:18,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64799 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:19,453 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64813 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:20,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64813 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:21,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64813 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:22,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64813 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:23,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64813 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:24,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64831 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:25,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64831 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:26,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64831 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:27,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64831 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:28,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64831 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:29,454 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64852 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:30,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64852 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:31,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64852 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:32,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64852 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:34,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64873 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:36,431 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64873 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:38,430 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64873 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:40,437 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64905 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:42,431 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64905 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:43,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64905 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:44,456 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64913 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:45,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64913 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:46,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64913 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:47,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64913 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:48,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64913 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:49,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64931 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:50,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64931 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:51,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64931 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:52,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64931 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:53,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64931 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:54,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64947 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:55,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64947 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:56,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64947 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:57,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64947 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:58,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64947 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:14:59,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64962 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:00,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64962 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:01,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64962 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:02,451 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64962 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:03,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64962 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:04,454 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64979 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:05,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64979 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:06,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64979 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:07,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64979 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:08,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64979 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:09,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64986 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:10,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64986 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:11,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64986 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:12,506 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:64986 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:14,441 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65005 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:16,430 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65005 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:18,432 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65005 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:20,441 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65029 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:22,433 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65029 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:24,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65045 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:26,433 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65045 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:28,433 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65045 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:30,438 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65066 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:32,432 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65066 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:34,438 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65077 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:36,432 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65077 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:38,439 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65077 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:40,439 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65087 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:42,432 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65087 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:44,441 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65095 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:46,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65095 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:48,433 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65095 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:50,441 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65104 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:52,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65104 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:54,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65122 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:56,433 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65122 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:15:58,442 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65122 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:16:00,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65138 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:16:02,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65138 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:16:04,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65156 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:16:06,432 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65156 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:16:08,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65156 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:16:10,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65173 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:16:12,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65173 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:16:58,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:65296 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:17:58,453 - __main__ - INFO - 收到获取 GPU 信息请求
-2025-12-02 01:17:58,492 - column.manage_gpu - WARNING - 获取进程 2514721 信息失败: PID still exists but it's a zombie (pid=2514721, name='python')
-INFO:     10.87.5.130:65527 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:00,889 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49310 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:01,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49310 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:02,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49310 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:03,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49310 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:04,455 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49331 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:05,498 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49331 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:06,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49331 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:07,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49331 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:08,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49331 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:09,461 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49338 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:10,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49338 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:11,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49338 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:12,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49338 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:13,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49338 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:14,460 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49349 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:15,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49349 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:16,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49349 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:17,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49349 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:18,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49349 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:19,454 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49367 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:20,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49367 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:21,453 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49367 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:22,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49367 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:23,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49367 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:24,461 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49381 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:25,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49381 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:26,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49381 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:27,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49381 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:28,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49381 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:29,458 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:30,465 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:31,452 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:32,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:33,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49404 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:34,458 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49419 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:35,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49419 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:36,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49419 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:37,450 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49419 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:38,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49419 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:39,455 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49428 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:40,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49428 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:41,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49428 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:42,447 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49428 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:42,612 - __main__ - INFO - 收到获取命令配置请求，模式: single
-2025-12-02 01:19:42,613 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
-2025-12-02 01:19:42,613 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
-2025-12-02 01:19:42,613 - column.config_command - INFO - 成功加载 6 个队列配置
-INFO:     10.87.5.130:49436 - "GET /api/commands/single HTTP/1.1" 200 OK
-2025-12-02 01:19:44,119 - __main__ - INFO - 收到获取系统设置请求
-2025-12-02 01:19:44,119 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
-2025-12-02 01:19:44,121 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
-INFO:     10.87.5.130:49445 - "GET /api/settings HTTP/1.1" 200 OK
-2025-12-02 01:19:44,487 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49445 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:46,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49445 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:47,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49445 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:48,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49445 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:49,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49468 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:50,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49468 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:51,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49468 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:52,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49468 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:53,439 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49468 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:54,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49488 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:55,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49488 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:56,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49488 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:57,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49488 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:58,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49488 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:19:59,442 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49499 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:00,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49499 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:01,437 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49499 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:02,438 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49499 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:03,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49499 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:04,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49517 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:05,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49517 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:06,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49517 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:07,556 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49517 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:08,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49517 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:09,274 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49530 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:09,509 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49530 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:10,489 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49530 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:11,489 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49530 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:12,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49530 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:13,493 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49530 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:14,494 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49546 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:15,497 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49546 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:16,492 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49546 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:17,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49546 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:18,491 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49546 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:19,500 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49561 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:20,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49561 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:21,491 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49561 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:22,493 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49561 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:23,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49561 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:24,497 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49577 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:25,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49577 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:26,491 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49577 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:27,492 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49577 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:28,491 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49577 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:29,498 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49604 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:30,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49604 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:31,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49604 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:32,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49604 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:33,499 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49604 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:34,496 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:35,491 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:36,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:37,489 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:38,491 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49615 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:39,496 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49624 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:40,491 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49624 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:41,492 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49624 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:42,490 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49624 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:44,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49640 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:45,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49640 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:46,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49640 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:47,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49640 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:48,438 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49640 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:49,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49657 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:50,438 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49657 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:51,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49657 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:52,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49657 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:53,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49657 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:54,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49673 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:55,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49673 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:56,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49673 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:57,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49673 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:58,441 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49673 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:20:59,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49688 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:00,439 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49688 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:01,441 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49688 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:02,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49688 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:03,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49688 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:04,446 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49708 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:05,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49708 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:06,439 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49708 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:07,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49708 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:08,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49708 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:09,443 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49719 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:10,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49719 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:11,437 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49719 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:12,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49719 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:13,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49719 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:14,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49733 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:15,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49733 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:16,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49733 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:17,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49733 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:18,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49733 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:19,445 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49745 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:20,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49745 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:21,437 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49745 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:22,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49745 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:23,434 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49745 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:24,444 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49765 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:25,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49765 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:26,437 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49765 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:27,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49765 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:28,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49765 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:29,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49787 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:30,440 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49787 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:31,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49787 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:32,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49787 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:33,435 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49787 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:34,442 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49800 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:35,442 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49800 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:36,534 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49800 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:37,439 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49800 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:38,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49800 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:39,448 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49807 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:40,437 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49807 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:41,441 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49807 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:42,436 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49807 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:43,437 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49807 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:21:58,449 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:49857 - "GET /api/gpu HTTP/1.1" 200 OK
-2025-12-02 01:22:58,455 - __main__ - INFO - 收到获取 GPU 信息请求
-INFO:     10.87.5.130:50053 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:37,066 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:55838 - "GET /ui/gpu HTTP/1.1" 200 OK
+INFO:     10.87.5.130:55838 - "GET /ui/assets/index-B_L_qlV3.js HTTP/1.1" 200 OK
+INFO:     10.87.5.130:55840 - "GET /ui/assets/index-Byggfn1b.css HTTP/1.1" 200 OK
+2025-12-02 03:02:37,426 - __main__ - INFO - 收到认证检查请求
+2025-12-02 03:02:37,426 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:55840 - "GET /api/auth/check HTTP/1.1" 200 OK
+INFO:     10.87.5.130:55843 - "GET /ui/images/gpu.jpg HTTP/1.1" 200 OK
+INFO:     10.87.5.130:55838 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:38,443 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:55843 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:39,425 - __main__ - INFO - 收到获取 GPU 信息请求
+2025-12-02 03:02:39,478 - __main__ - INFO - 收到登录请求
+INFO:     10.87.5.130:55838 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     10.87.5.130:55843 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:40,424 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:55843 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:41,355 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:02:41,355 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:02:41,356 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:02:41,356 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:55887 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:02:43,016 - __main__ - INFO - 收到获取配置请求
+2025-12-02 03:02:43,016 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:02:43,022 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
+2025-12-02 03:02:43,022 - __main__ - INFO - 成功获取配置数据
+INFO:     10.87.5.130:55887 - "GET /api/config HTTP/1.1" 200 OK
+2025-12-02 03:02:44,339 - __main__ - INFO - 收到获取系统设置请求
+2025-12-02 03:02:44,339 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
+2025-12-02 03:02:44,343 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
+INFO:     10.87.5.130:55887 - "GET /api/settings HTTP/1.1" 200 OK
+2025-12-02 03:02:48,514 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:55918 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:49,495 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:55918 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:50,270 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:02:50,270 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:02:50,270 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:02:50,270 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:55918 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:02:51,317 - __main__ - INFO - 收到获取配置请求
+2025-12-02 03:02:51,317 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:02:51,323 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
+2025-12-02 03:02:51,323 - __main__ - INFO - 成功获取配置数据
+INFO:     10.87.5.130:55928 - "GET /api/config HTTP/1.1" 200 OK
+2025-12-02 03:02:52,678 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:55928 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:53,136 - __main__ - INFO - 收到获取配置请求
+2025-12-02 03:02:53,137 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:02:53,142 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
+2025-12-02 03:02:53,142 - __main__ - INFO - 成功获取配置数据
+INFO:     10.87.5.130:55928 - "GET /api/config HTTP/1.1" 200 OK
+2025-12-02 03:02:53,759 - __main__ - INFO - 收到获取系统设置请求
+2025-12-02 03:02:53,759 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
+2025-12-02 03:02:53,762 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
+INFO:     10.87.5.130:55928 - "GET /api/settings HTTP/1.1" 200 OK
+2025-12-02 03:02:54,698 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:02:54,699 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:02:54,699 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:02:54,699 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:55928 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:02:55,535 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:55928 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:02:56,520 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:02:56,520 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:02:56,521 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:02:56,521 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:55956 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:02:57,265 - __main__ - INFO - 收到获取配置请求
+2025-12-02 03:02:57,265 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:02:57,268 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
+2025-12-02 03:02:57,268 - __main__ - INFO - 成功获取配置数据
+INFO:     10.87.5.130:55956 - "GET /api/config HTTP/1.1" 200 OK
+2025-12-02 03:02:58,061 - __main__ - INFO - 收到获取系统设置请求
+2025-12-02 03:02:58,061 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
+2025-12-02 03:02:58,063 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
+INFO:     10.87.5.130:55956 - "GET /api/settings HTTP/1.1" 200 OK
+2025-12-02 03:03:01,437 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:03:01,437 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:03:01,438 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:03:01,438 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:56010 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:03:02,036 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56010 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:03:02,621 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:03:02,621 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:03:02,622 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:03:02,622 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:56010 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:03:32,304 - __main__ - INFO - 收到获取配置请求
+2025-12-02 03:03:32,304 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:03:32,309 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
+2025-12-02 03:03:32,309 - __main__ - INFO - 成功获取配置数据
+INFO:     10.87.5.130:56116 - "GET /api/config HTTP/1.1" 200 OK
+2025-12-02 03:03:32,932 - __main__ - INFO - 收到获取系统设置请求
+2025-12-02 03:03:32,933 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
+2025-12-02 03:03:32,935 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
+INFO:     10.87.5.130:56116 - "GET /api/settings HTTP/1.1" 200 OK
+2025-12-02 03:03:34,080 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:03:34,081 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:03:34,081 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:03:34,081 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:56116 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:03:34,738 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56116 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:03:35,430 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:03:35,431 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:03:35,431 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:03:35,431 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:56116 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:03:37,008 - __main__ - INFO - 收到获取配置请求
+2025-12-02 03:03:37,009 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:03:37,013 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
+2025-12-02 03:03:37,013 - __main__ - INFO - 成功获取配置数据
+INFO:     10.87.5.130:56132 - "GET /api/config HTTP/1.1" 200 OK
+2025-12-02 03:03:37,471 - __main__ - INFO - 收到获取系统设置请求
+2025-12-02 03:03:37,471 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
+2025-12-02 03:03:37,474 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
+INFO:     10.87.5.130:56132 - "GET /api/settings HTTP/1.1" 200 OK
+2025-12-02 03:03:38,667 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:03:38,667 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:03:38,667 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:03:38,667 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:56132 - "GET /api/commands/single HTTP/1.1" 200 OK
+INFO:     10.87.5.130:56150 - "GET /ui/status HTTP/1.1" 200 OK
+INFO:     10.87.5.130:56150 - "GET /ui/assets/index-Byggfn1b.css HTTP/1.1" 304 Not Modified
+INFO:     10.87.5.130:56154 - "GET /ui/assets/index-B_L_qlV3.js HTTP/1.1" 304 Not Modified
+2025-12-02 03:03:44,538 - __main__ - INFO - 收到认证检查请求
+INFO:     10.87.5.130:56154 - "GET /api/auth/check HTTP/1.1" 200 OK
+INFO:     10.87.5.130:56150 - "GET /ui/images/gpu.jpg HTTP/1.1" 304 Not Modified
+2025-12-02 03:03:47,169 - __main__ - INFO - 收到登录请求
+INFO:     10.87.5.130:56165 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     10.87.5.130:56165 - "GET /ui/status HTTP/1.1" 200 OK
+2025-12-02 03:03:48,572 - __main__ - INFO - 收到认证检查请求
+INFO:     10.87.5.130:56165 - "GET /api/auth/check HTTP/1.1" 200 OK
+2025-12-02 03:03:49,742 - __main__ - INFO - 收到登录请求
+INFO:     10.87.5.130:56165 - "POST /api/auth/login HTTP/1.1" 200 OK
+2025-12-02 03:03:50,296 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56165 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:03:51,275 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56172 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:03:52,137 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:03:52,137 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:03:52,137 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:03:52,137 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:56172 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:03:53,101 - __main__ - INFO - 收到获取配置请求
+2025-12-02 03:03:53,101 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:03:53,105 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
+2025-12-02 03:03:53,105 - __main__ - INFO - 成功获取配置数据
+INFO:     10.87.5.130:56172 - "GET /api/config HTTP/1.1" 200 OK
+2025-12-02 03:03:53,596 - __main__ - INFO - 收到获取系统设置请求
+2025-12-02 03:03:53,596 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/config.yaml
+2025-12-02 03:03:53,599 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
+INFO:     10.87.5.130:56172 - "GET /api/settings HTTP/1.1" 200 OK
+2025-12-02 03:03:58,474 - __main__ - INFO - 收到获取配置请求
+2025-12-02 03:03:58,474 - column.config_rule - INFO - 读取配置文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/front_end/../config.yaml
+2025-12-02 03:03:58,479 - column.config_rule - INFO - 成功读取配置，包含 12 个顶级键
+2025-12-02 03:03:58,479 - __main__ - INFO - 成功获取配置数据
+INFO:     10.87.5.130:56195 - "GET /api/config HTTP/1.1" 200 OK
+2025-12-02 03:04:03,100 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:04:03,100 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:04:03,101 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:04:03,101 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:56234 - "GET /api/commands/single HTTP/1.1" 200 OK
+2025-12-02 03:04:04,297 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56234 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:04:05,287 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56234 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:04:06,295 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56245 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:04:07,287 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56245 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:04:08,288 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56245 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:04:09,295 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56245 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:04:10,297 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56245 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:04:11,292 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.5.130:56298 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-02 03:04:12,178 - __main__ - INFO - 收到获取命令配置请求，模式: single
+2025-12-02 03:04:12,178 - column.config_command - INFO - 加载命令配置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command_gpu.txt
+2025-12-02 03:04:12,179 - column.config_command - INFO - 解析完成，共 6 个队列，14 个进程
+2025-12-02 03:04:12,179 - column.config_command - INFO - 成功加载 6 个队列配置
+INFO:     10.87.5.130:56298 - "GET /api/commands/single HTTP/1.1" 200 OK

@@ -7,10 +7,9 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 from datetime import datetime
 
-from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi import FastAPI, HTTPException, status
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from pydantic import BaseModel, ValidationError
 
 # 导入自定义模块
@@ -105,18 +104,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# 安全认证
-security = HTTPBasic()
-
-def verify_credentials(credentials: HTTPBasicCredentials = Depends(security)):
-    """验证用户凭据"""
-    if credentials.username != "admin" or credentials.password != SECRET:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid credentials",
-            headers={"WWW-Authenticate": "Basic"},
-        )
-    return credentials
+# 注意：SECRET 已在第 59 行从 front_end/config.yaml 读取
 
 # 数据模型（用于校验 GPU 配置）
 class ConfigModel(BaseModel):
@@ -135,7 +123,7 @@ class ConfigModel(BaseModel):
         allow_population_by_field_name = True
 
 @app.get("/api/config")
-def get_config(credentials: HTTPBasicCredentials = Depends(verify_credentials)):
+def get_config():
     """返回当前配置（JSON）"""
     try:
         logger.info("收到获取配置请求")
@@ -147,11 +135,38 @@ def get_config(credentials: HTTPBasicCredentials = Depends(verify_credentials)):
         logger.error(f"获取配置失败: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/auth/check")
+def check_auth():
+    """检查是否需要认证"""
+    try:
+        logger.info("收到认证检查请求")
+        if SECRET == "" or SECRET.lower() in ["none", "null", "false"]:
+            return {"requires_auth": False}
+        else:
+            return {"requires_auth": True}
+    except Exception as e:
+        logger.error(f"检查认证失败: {e}")
+        return {"requires_auth": True}
+
+@app.post("/api/auth/login")
+def login(login_data: dict):
+    """登录验证"""
+    try:
+        logger.info("收到登录请求")
+        password = login_data.get("password", "")
+        
+        if SECRET == "" or SECRET.lower() in ["none", "null", "false"]:
+            return {"success": True, "message": "无需认证"}
+        elif password == SECRET:
+            return {"success": True, "message": "登录成功"}
+        else:
+            return {"success": False, "message": "密码错误"}
+    except Exception as e:
+        logger.error(f"登录验证失败: {e}")
+        return {"success": False, "message": "登录失败"}
+
 @app.put("/api/config")
-def update_config(
-    data: Dict[str, Any],
-    credentials: HTTPBasicCredentials = Depends(verify_credentials)
-):
+def update_config(data: Dict[str, Any]):
     """更新配置"""
     try:
         logger.info("收到保存配置请求")
@@ -178,7 +193,7 @@ def update_config(
 # ==================== GPU 管理 API ====================
 
 @app.get("/api/gpu")
-def get_gpu_info_api(credentials: HTTPBasicCredentials = Depends(verify_credentials)):
+def get_gpu_info_api():
     """获取 GPU 概要信息（类似 nvitop）"""
     try:
         logger.info("收到获取 GPU 信息请求")
@@ -190,7 +205,7 @@ def get_gpu_info_api(credentials: HTTPBasicCredentials = Depends(verify_credenti
 
 
 @app.get("/api/gpu/processes")
-def get_gpu_processes_api(credentials: HTTPBasicCredentials = Depends(verify_credentials)):
+def get_gpu_processes_api():
     """获取所有 GPU 进程信息"""
     try:
         logger.info("收到获取 GPU 进程请求")
@@ -212,7 +227,7 @@ def get_gpu_status_api():
 # ==================== 命令配置 API ====================
 
 @app.get("/api/commands/{mode}")
-def get_commands_api(mode: str, credentials: HTTPBasicCredentials = Depends(verify_credentials)):
+def get_commands_api(mode: str):
     """获取命令配置"""
     try:
         logger.info(f"收到获取命令配置请求，模式: {mode}")
@@ -232,8 +247,7 @@ def get_commands_api(mode: str, credentials: HTTPBasicCredentials = Depends(veri
 @app.put("/api/commands/{mode}")
 def update_commands_api(
     mode: str, 
-    config_data: dict, 
-    credentials: HTTPBasicCredentials = Depends(verify_credentials)
+    config_data: dict
 ):
     """更新命令配置"""
     try:
@@ -270,10 +284,7 @@ def update_commands_api(
 
 
 @app.post("/api/commands/{mode}/reset")
-def reset_commands_api(
-    mode: str, 
-    credentials: HTTPBasicCredentials = Depends(verify_credentials)
-):
+def reset_commands_api(mode: str):
     """重置命令配置到备份文件"""
     try:
         logger.info(f"收到重置命令配置请求，模式: {mode}")
@@ -302,7 +313,7 @@ def reset_commands_api(
 # ==================== 系统设置 API ====================
 
 @app.get("/api/settings")
-def get_settings_api(credentials: HTTPBasicCredentials = Depends(verify_credentials)):
+def get_settings_api():
     """获取系统设置"""
     try:
         logger.info("收到获取系统设置请求")
@@ -326,7 +337,7 @@ def get_settings_api(credentials: HTTPBasicCredentials = Depends(verify_credenti
 
 
 @app.put("/api/settings")
-def update_settings_api(settings_data: dict, credentials: HTTPBasicCredentials = Depends(verify_credentials)):
+def update_settings_api(settings_data: dict):
     """更新系统设置"""
     try:
         logger.info("收到更新系统设置请求")
@@ -367,8 +378,29 @@ def update_settings_api(settings_data: dict, credentials: HTTPBasicCredentials =
         raise HTTPException(status_code=500, detail=str(e))
 
 # 静态文件服务（前端构建产物）
+from fastapi.responses import RedirectResponse, HTMLResponse
+
 if STATIC_DIR.is_dir():
-    app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="static")
+    # 挂载静态资源（CSS、JS等）
+    app.mount("/ui/assets", StaticFiles(directory=str(STATIC_DIR / "assets")), name="assets")
+    
+    # 挂载图片资源
+    images_dir = STATIC_DIR / "images"
+    if images_dir.is_dir():
+        app.mount("/ui/images", StaticFiles(directory=str(images_dir)), name="images")
+    
+    # 根路径重定向到 /ui/
+    @app.get("/")
+    def redirect_to_ui():
+        return RedirectResponse(url="/ui/")
+    
+    # SPA 路由处理 - 所有 /ui/* 路径都返回 index.html
+    @app.get("/ui/{full_path:path}")
+    def serve_spa(full_path: str):
+        index_file = STATIC_DIR / "index.html"
+        if index_file.is_file():
+            return HTMLResponse(content=index_file.read_text(encoding="utf-8"))
+        return {"detail": "index.html not found"}
 else:
     @app.get("/")
     def read_root():
