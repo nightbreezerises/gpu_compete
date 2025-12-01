@@ -1,0 +1,105 @@
+# 任务配置文件格式说明：
+# 1. 每个任务块以空行分隔
+# 2. 第一行：队列ID（数字，可跟注释如 "1 #队列ID"）
+# 3. 中间行：命令列表（建议用引号包围，支持变量 {work_dir} 和 {uni_id}）
+# 4. 最后一行：显存需求（数字，可跟注释如 "20 #显存"）
+# 5. 支持的变量：
+#    - {work_dir}: 工作目录（脚本父目录）
+#    - {uni_id}: 唯一标识符（自动生成）
+#
+# 示例任务块：
+# 1 #队列ID
+# "命令1"
+# "命令2"
+# "命令3"
+# 20 #显存需求
+#
+# ==================== 任务列表 ====================
+
+# 第一个队列，汽车数据集
+1 # 队列ID
+"rm -rf {work_dir}/experiments/car196/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 8"
+"bash {work_dir}/scripts/run_pipeline.sh car --uni_id {uni_id}"
+20 # 所需显存
+
+1
+"rm -rf {work_dir}/experiments/car196/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 5"
+"bash {work_dir}/scripts/run_pipeline.sh car --uni_id {uni_id}"
+20
+
+1
+"rm -rf {work_dir}/experiments/car196/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 3"
+"bash {work_dir}/scripts/run_pipeline.sh car --uni_id {uni_id}"
+20
+
+1
+"rm -rf {work_dir}/experiments/car196/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 20"
+"bash {work_dir}/scripts/run_pipeline.sh car --uni_id {uni_id}"
+20
+
+1
+"rm -rf {work_dir}/experiments/car196/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 50"
+"bash {work_dir}/scripts/run_pipeline.sh car --uni_id {uni_id}"
+20
+
+# 第二个队列，花卉数据集
+2
+"rm -rf {work_dir}/experiments/flower102/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 15"
+"bash {work_dir}/scripts/run_pipeline.sh flower --uni_id {uni_id}"
+20
+
+2
+"rm -rf {work_dir}/experiments/flower102/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 5"
+"bash {work_dir}/scripts/run_pipeline.sh flower --uni_id {uni_id}"
+20
+
+# 第三个队列，鸟类数据集
+3
+"rm -rf {work_dir}/experiments/bird200/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 10"
+"bash {work_dir}/scripts/run_pipeline.sh bird --uni_id {uni_id}"
+20
+
+3
+"rm -rf {work_dir}/experiments/bird200/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 20"
+"bash {work_dir}/scripts/run_pipeline.sh bird --uni_id {uni_id}"
+20
+
+# 第四个队列，ImageNet
+4
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 8"
+"bash {work_dir}/scripts/run_pipeline.sh imagenet_v2 --uni_id {uni_id}"
+20
+
+# 第五个队列，狗类数据集
+5
+"rm -rf {work_dir}/experiments/dog120/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 5"
+"bash {work_dir}/scripts/run_pipeline.sh dog --uni_id {uni_id}"
+20
+
+5
+"rm -rf {work_dir}/experiments/dog120/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 15"
+"bash {work_dir}/scripts/run_pipeline.sh dog --uni_id {uni_id}"
+20
+
+5
+"rm -rf {work_dir}/experiments/dog120/knowledge_base"
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 3"
+"bash {work_dir}/scripts/run_pipeline.sh dog --uni_id {uni_id}"
+20
+
+# 第六个队列，场景数据集
+6
+"bash {work_dir}/scripts/set_hyperparameters.sh --experience_number 8"
+"bash {work_dir}/scripts/run_pipeline.sh sun397 --uni_id {uni_id}"
+20

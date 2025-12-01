@@ -1,0 +1,94 @@
+如何删除前端旧产物，增加新产物：
+1. 删除旧的前端构建产物（如 dist/ 目录）
+2. 删除 node_modules 依赖
+3. 重新安装依赖：npm install
+4. 重新构建：npm run build
+5. 重启后端服务
+
+ESC 键功能：
+- 所有输入框支持 ESC 键清空当前输入
+- 数字输入框清空为空字符串（可重新输入新数字）
+- 文本输入框清空为空字符串
+
+YAML 格式保持：
+- 使用字符串替换方案保留注释
+- 数组保持行内格式 [0,1,2,3]
+- 值更新时保留原有注释
+- 不再创建备份文件，由 Git 管理版本
+
+快速命令：
+rm -rf front_end/dist && rm -rf front_end/node_modules
+export PATH=$HOME/app/node-local/bin:$PATH && cd front_end && npm install
+export PATH=$HOME/app/node-local/bin:$PATH && cd front_end && npm run build
+
+GPU 配置编辑器 - 配置事项
+
+## 虚拟环境设置
+- **虚拟环境**：Python venv
+- **环境路径**：`/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/env`
+- **激活命令**：`source /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/env/bin/activate`
+
+## 启动命令
+```bash
+# 激活虚拟环境并启动服务
+source /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/env/bin/activate && cd setting_config && python main.py
+```
+
+## 访问信息
+- **URL**：`http://10.82.1.223:29214`
+- **用户名**：`admin`
+- **密码**：`omniai315fgvr_gpu_config`
+
+## ESC 键功能
+- **功能**：所有输入框支持 ESC 键快速清空
+- **效果**：数字输入框清空为空字符串（不是 0）
+- **用户体验**：提供快速重新输入的能力
+
+## 前端构建流程
+```bash
+# 1. 删除旧产物
+rm -rf front_end/dist && rm -rf front_end/node_modules
+
+# 2. 重新安装依赖
+export PATH=$HOME/app/node-local/bin:$PATH && cd front_end && npm install
+
+# 3. 重新构建
+export PATH=$HOME/app/node-local/bin:$PATH && cd front_end && npm run build
+
+# 4. 重启服务
+pkill -f "python.*main.py" || true
+source /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/env/bin/activate && cd setting_config && python main.py
+```
+
+## YAML 格式保持
+- **方案**：使用字符串替换而非重新序列化
+- **效果**：保留原始注释和格式
+- **数组格式**：保持行内格式 `[0,1,2,3]`
+
+## 字符串处理逻辑
+- **前端**：所有输入作为字符串处理
+- **后端**：数字字段自动转换，空字符串转 null
+- **优势**：避免类型转换问题，提升用户体验
+
+## 代码结构
+- **主程序**：`main.py` - API 接口和服务启动
+- **YAML 处理**：`utils/config_yaml.py` - 配置文件处理模块
+- **前端**：`front_end/src/App.jsx` - React 应用
+
+## 安全认证
+- **方式**：HTTP Basic Auth
+- **保护**：所有 API 接口需要认证
+- **界面**：clash-dashboard 风格登录界面
+
+## 快速命令
+```bash
+# 完整重启流程
+pkill -f "python.*main.py" || true && \
+source /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/env/bin/activate && \
+cd /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/setting_config && \
+python main.py
+```
+
+运行
+pkill -f "python.*main.py" || true
+conda activate compete_gpu && cd setting_config && python main.py

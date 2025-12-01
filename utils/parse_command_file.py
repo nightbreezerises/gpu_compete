@@ -1,5 +1,5 @@
 """
-Command File Parser - 解析命令配置文件
+Command File Parser - 解析命令配置文件（单GPU版本）
 """
 
 import os

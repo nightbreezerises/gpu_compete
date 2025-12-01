@@ -68,6 +68,22 @@ class ProcessYAML:
         except (KeyError, TypeError):
             return default
     
+    def get_int(self, key: str, default: int = 0) -> int:
+        """获取整数配置项
+        
+        Args:
+            key: 配置键
+            default: 默认值
+            
+        Returns:
+            整数配置值
+        """
+        value = self.get(key, default)
+        try:
+            return int(value)
+        except (ValueError, TypeError):
+            return default
+    
     def get_config(self) -> Dict[str, Any]:
         """获取完整配置
         
