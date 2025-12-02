@@ -1,0 +1,75 @@
+2025-12-03 04:33:31,455 - INFO - 📝 Log file: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/logs/compete_gpu(31).log
+2025-12-03 04:33:31,597 - INFO - 🖥️ Using 3/10 GPUs: [0, 1, 2]
+2025-12-03 04:33:31,597 - INFO - 🖥️ Reserved GPUs: [3, 4, 5, 6, 7, 8, 9] (gpu_left=2, excess=5)
+2025-12-03 04:33:31,598 - INFO - 📋 Total tasks: 5, Queues: [1, 2, 3]
+2025-12-03 04:33:31,598 - INFO -    Queue 1: 2 tasks
+2025-12-03 04:33:31,598 - INFO -    Queue 2: 2 tasks
+2025-12-03 04:33:31,598 - INFO -    Queue 3: 1 tasks
+2025-12-03 04:33:31,706 - INFO - 🏁 Starting GPU competition scheduler
+2025-12-03 04:33:31,706 - INFO - ============================================================
+2025-12-03 04:33:31,706 - INFO - 📊 Tasks: Pending=5, Running=0, Completed=0, Failed=0
+2025-12-03 04:33:31,706 - INFO -    Queue 1: 🟢 IDLE, Pending=2, Completed=0
+2025-12-03 04:33:31,706 - INFO -    Queue 2: 🟢 IDLE, Pending=2, Completed=0
+2025-12-03 04:33:31,706 - INFO -    Queue 3: 🟢 IDLE, Pending=1, Completed=0
+2025-12-03 04:33:31,706 - INFO - ============================================================
+2025-12-03 04:33:31,706 - INFO - 🔧 Starting 3 queues with 3 workers
+2025-12-03 04:33:31,708 - INFO - 🚀 Queue 1: Starting with 2 tasks
+2025-12-03 04:33:31,708 - INFO - 🚀 Queue 2: Starting with 2 tasks
+2025-12-03 04:33:31,709 - INFO - 🚀 Queue 3: Starting with 1 tasks
+2025-12-03 04:33:31,869 - INFO - 🔍 发现 3 个候选GPU: [0, 1, 2]，启动智能选择...
+2025-12-03 04:33:31,870 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 04:33:37,897 - INFO - GPU 0 [节省显存模式]: free=30.84GB, used=16.56GB, util=21.1%, mem_util=34.51%, score=(10.6431, 30.8447)
+2025-12-03 04:33:37,897 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 04:33:37,897 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 04:33:37,898 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 04:33:37,898 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 04:33:37,898 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=0)
+2025-12-03 04:33:37,900 - INFO - 🚀 Starting task (Queue 1, retry=0) on GPU 1
+2025-12-03 04:33:37,900 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:33:37,998 - INFO - 🔍 发现 2 个候选GPU: [0, 2]，启动智能选择...
+2025-12-03 04:33:37,999 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 04:33:43,101 - INFO - GPU 0 [节省显存模式]: free=30.84GB, used=16.56GB, util=26.2%, mem_util=34.51%, score=(10.6431, 30.8447)
+2025-12-03 04:33:43,101 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 04:33:43,101 - INFO - ✅ 选择GPU 0: free=30.84GB, util=26.2%
+2025-12-03 04:33:43,102 - INFO - 🔒 GPU 0 acquired by queue 2
+2025-12-03 04:33:43,102 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 0 (retry=0)
+2025-12-03 04:33:43,104 - INFO - 🚀 Starting task (Queue 2, retry=0) on GPU 0
+2025-12-03 04:33:43,104 - INFO -    [1/1] [GPU 0] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:33:43,185 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 04:33:43,185 - INFO - 🔒 GPU 2 acquired by queue 3
+2025-12-03 04:33:43,185 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 2 (retry=0)
+2025-12-03 04:33:43,188 - INFO - 🚀 Starting task (Queue 3, retry=0) on GPU 2
+2025-12-03 04:33:43,188 - INFO -    [1/1] [GPU 2] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:34:40,794 - INFO - ✅ Task (Queue 1) completed successfully
+2025-12-03 04:34:40,794 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 04:34:40,936 - INFO - ✅ GPU 1 available: 10.8GB free (唯一候选)
+2025-12-03 04:34:40,936 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 04:34:40,936 - INFO - 🎯 Queue 1: Executing task 2/2 on GPU 1 (retry=0)
+2025-12-03 04:34:40,937 - INFO - 🚀 Starting task (Queue 1, retry=0) on GPU 1
+2025-12-03 04:34:40,937 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:34:45,983 - INFO - ✅ Task (Queue 2) completed successfully
+2025-12-03 04:34:45,983 - INFO - 🔓 GPU 0 released by queue 2
+2025-12-03 04:34:46,077 - INFO - ✅ GPU 0 available: 30.8GB free (唯一候选)
+2025-12-03 04:34:46,077 - INFO - 🔒 GPU 0 acquired by queue 2
+2025-12-03 04:34:46,077 - INFO - 🎯 Queue 2: Executing task 2/2 on GPU 0 (retry=0)
+2025-12-03 04:34:46,079 - INFO - 🚀 Starting task (Queue 2, retry=0) on GPU 0
+2025-12-03 04:34:46,079 - INFO -    [1/1] [GPU 0] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:34:46,205 - INFO - ✅ Task (Queue 3) completed successfully
+2025-12-03 04:34:46,205 - INFO - 🔓 GPU 2 released by queue 3
+2025-12-03 04:34:46,207 - INFO - 🏁 Queue 3: Finished. Completed 1/1 tasks
+2025-12-03 04:34:46,208 - INFO - ✅ Queue 3 completed
+2025-12-03 04:35:43,675 - INFO - ✅ Task (Queue 1) completed successfully
+2025-12-03 04:35:43,676 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 04:35:43,678 - INFO - 🏁 Queue 1: Finished. Completed 2/2 tasks
+2025-12-03 04:35:43,679 - INFO - ✅ Queue 1 completed
+2025-12-03 04:35:48,727 - INFO - ✅ Task (Queue 2) completed successfully
+2025-12-03 04:35:48,727 - INFO - 🔓 GPU 0 released by queue 2
+2025-12-03 04:35:48,730 - INFO - 🏁 Queue 2: Finished. Completed 2/2 tasks
+2025-12-03 04:35:48,730 - INFO - ✅ Queue 2 completed
+2025-12-03 04:35:48,731 - INFO - ============================================================
+2025-12-03 04:35:48,731 - INFO - 📊 Tasks: Pending=0, Running=0, Completed=5, Failed=0
+2025-12-03 04:35:48,731 - INFO -    Queue 1: 🟢 IDLE, Pending=0, Completed=2
+2025-12-03 04:35:48,731 - INFO -    Queue 2: 🟢 IDLE, Pending=0, Completed=2
+2025-12-03 04:35:48,731 - INFO -    Queue 3: 🟢 IDLE, Pending=0, Completed=1
+2025-12-03 04:35:48,731 - INFO - ============================================================
+2025-12-03 04:35:48,732 - INFO - 🎉 All queues finished!

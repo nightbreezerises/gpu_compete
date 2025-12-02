@@ -1,0 +1,153 @@
+{
+  "pid": 3464354,
+  "mode": "single",
+  "config_index": 0,
+  "config_file": "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command/command_gpu.txt",
+  "state": "running",
+  "started_at": "2025-12-03T04:39:50.262042",
+  "finished_at": null,
+  "total_tasks": 5,
+  "pending_tasks": 2,
+  "running_tasks": 0,
+  "completed_tasks": 0,
+  "failed_tasks": 0,
+  "gpus_used": [
+    0,
+    1,
+    2
+  ],
+  "gpus_available": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "gpu_assignments": {},
+  "queues": {
+    "1": {
+      "id": 1,
+      "status": "running",
+      "total_tasks": 2,
+      "pending_tasks": 1,
+      "running_tasks": 0,
+      "completed_tasks": 0,
+      "failed_tasks": 0,
+      "current_task": "任务 1/2 失败，准备重试",
+      "current_gpu": 1,
+      "last_error": "exit_code_1",
+      "processes": [
+        {
+          "index": 0,
+          "commands": [
+            "conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500"
+          ],
+          "memory_gb": 1,
+          "gpu_count": 1,
+          "status": "retrying",
+          "current_gpu": 1,
+          "gpus": [],
+          "retry_count": 2,
+          "last_error": "exit_code_1",
+          "started_at": "2025-12-03T04:40:12.851898",
+          "finished_at": null
+        },
+        {
+          "index": 1,
+          "commands": [
+            "conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500"
+          ],
+          "memory_gb": 1,
+          "gpu_count": 1,
+          "status": "pending",
+          "current_gpu": null,
+          "gpus": [],
+          "retry_count": 0,
+          "last_error": null,
+          "started_at": null,
+          "finished_at": null
+        }
+      ]
+    },
+    "2": {
+      "id": 2,
+      "status": "running",
+      "total_tasks": 2,
+      "pending_tasks": 1,
+      "running_tasks": 0,
+      "completed_tasks": 0,
+      "failed_tasks": 0,
+      "current_task": "任务 1/2 失败，准备重试",
+      "current_gpu": 0,
+      "last_error": "exit_code_1",
+      "processes": [
+        {
+          "index": 0,
+          "commands": [
+            "conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500"
+          ],
+          "memory_gb": 1,
+          "gpu_count": 1,
+          "status": "retrying",
+          "current_gpu": 0,
+          "gpus": [],
+          "retry_count": 2,
+          "last_error": "exit_code_1",
+          "started_at": "2025-12-03T04:40:17.877781",
+          "finished_at": null
+        },
+        {
+          "index": 1,
+          "commands": [
+            "conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500"
+          ],
+          "memory_gb": 1,
+          "gpu_count": 1,
+          "status": "pending",
+          "current_gpu": null,
+          "gpus": [],
+          "retry_count": 0,
+          "last_error": null,
+          "started_at": null,
+          "finished_at": null
+        }
+      ]
+    },
+    "3": {
+      "id": 3,
+      "status": "running",
+      "total_tasks": 1,
+      "pending_tasks": 0,
+      "running_tasks": 0,
+      "completed_tasks": 0,
+      "failed_tasks": 0,
+      "current_task": "任务 1/1 失败，准备重试",
+      "current_gpu": 2,
+      "last_error": "exit_code_1",
+      "processes": [
+        {
+          "index": 0,
+          "commands": [
+            "conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500"
+          ],
+          "memory_gb": 1,
+          "gpu_count": 1,
+          "status": "retrying",
+          "current_gpu": 2,
+          "gpus": [],
+          "retry_count": 2,
+          "last_error": "exit_code_1",
+          "started_at": "2025-12-03T04:40:17.974943",
+          "finished_at": null
+        }
+      ]
+    }
+  },
+  "last_log_lines": [],
+  "last_error": null
+}

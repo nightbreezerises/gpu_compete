@@ -1,0 +1,201 @@
+2025-12-03 04:06:38,337 - INFO - 📝 Log file: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/logs/compete_gpu(20).log
+2025-12-03 04:06:38,452 - INFO - 🖥️ Using 3/10 GPUs: [0, 1, 2]
+2025-12-03 04:06:38,453 - INFO - 🖥️ Reserved GPUs: [3, 4, 5, 6, 7, 8, 9] (gpu_left=2, excess=5)
+2025-12-03 04:06:38,453 - INFO - 📋 Total tasks: 5, Queues: [1, 2, 3]
+2025-12-03 04:06:38,453 - INFO -    Queue 1: 2 tasks
+2025-12-03 04:06:38,453 - INFO -    Queue 2: 2 tasks
+2025-12-03 04:06:38,453 - INFO -    Queue 3: 1 tasks
+2025-12-03 04:06:38,564 - INFO - 🏁 Starting GPU competition scheduler
+2025-12-03 04:06:38,564 - INFO - ============================================================
+2025-12-03 04:06:38,564 - INFO - 📊 Tasks: Pending=5, Running=0, Completed=0, Failed=0
+2025-12-03 04:06:38,564 - INFO -    Queue 1: 🟢 IDLE, Pending=2, Completed=0
+2025-12-03 04:06:38,564 - INFO -    Queue 2: 🟢 IDLE, Pending=2, Completed=0
+2025-12-03 04:06:38,564 - INFO -    Queue 3: 🟢 IDLE, Pending=1, Completed=0
+2025-12-03 04:06:38,564 - INFO - ============================================================
+2025-12-03 04:06:38,564 - INFO - 🔧 Starting 3 queues with 3 workers
+2025-12-03 04:06:38,566 - INFO - 🚀 Queue 1: Starting with 2 tasks
+2025-12-03 04:06:38,566 - INFO - 🚀 Queue 2: Starting with 2 tasks
+2025-12-03 04:06:38,567 - INFO - 🚀 Queue 3: Starting with 1 tasks
+2025-12-03 04:06:38,733 - INFO - 🔍 发现 3 个候选GPU: [0, 1, 2]，启动智能选择...
+2025-12-03 04:06:38,733 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 04:06:44,712 - INFO - GPU 0 [节省显存模式]: free=30.84GB, used=16.56GB, util=6.6%, mem_util=34.51%, score=(10.6431, 30.8447)
+2025-12-03 04:06:44,713 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 04:06:44,713 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 04:06:44,713 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 04:06:44,713 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 04:06:44,713 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=0)
+2025-12-03 04:06:44,716 - INFO - 🚀 Starting task (Queue 1, retry=0) on GPU 1
+2025-12-03 04:06:44,716 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:06:44,844 - INFO - 🔍 发现 2 个候选GPU: [0, 2]，启动智能选择...
+2025-12-03 04:06:44,845 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 04:06:46,949 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:06:46,949 - WARNING - 🔄 Task (Queue 1) failed (retry #1, error=exit_code_1), will retry soon
+2025-12-03 04:06:49,847 - INFO - GPU 0 [节省显存模式]: free=30.84GB, used=16.56GB, util=12.4%, mem_util=34.51%, score=(10.6431, 30.8447)
+2025-12-03 04:06:49,847 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 04:06:49,848 - INFO - ✅ 选择GPU 0: free=30.84GB, util=12.4%
+2025-12-03 04:06:49,848 - INFO - 🔒 GPU 0 acquired by queue 2
+2025-12-03 04:06:49,848 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 0 (retry=0)
+2025-12-03 04:06:49,850 - INFO - 🚀 Starting task (Queue 2, retry=0) on GPU 0
+2025-12-03 04:06:49,850 - INFO -    [1/1] [GPU 0] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:06:49,988 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 04:06:49,988 - INFO - 🔒 GPU 2 acquired by queue 3
+2025-12-03 04:06:49,989 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 2 (retry=0)
+2025-12-03 04:06:49,989 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 04:06:49,990 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=1)
+2025-12-03 04:06:49,992 - INFO - 🚀 Starting task (Queue 3, retry=0) on GPU 2
+2025-12-03 04:06:49,992 - INFO -    [1/1] [GPU 2] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:06:52,095 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:06:52,095 - WARNING - 🔄 Task (Queue 2) failed (retry #1, error=exit_code_1), will retry soon
+2025-12-03 04:06:52,095 - INFO - 🔓 GPU 0 released by queue 2
+2025-12-03 04:06:52,095 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=1)
+2025-12-03 04:06:52,235 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:06:52,235 - WARNING - 🔄 Task (Queue 3) failed (retry #1, error=exit_code_1), will retry soon
+2025-12-03 04:06:52,235 - INFO - 🔓 GPU 2 released by queue 3
+2025-12-03 04:06:52,235 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=1)
+2025-12-03 04:06:55,166 - INFO - 🔍 发现 3 个候选GPU: [0, 1, 2]，启动智能选择...
+2025-12-03 04:06:55,166 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 04:07:01,281 - INFO - GPU 0 [节省显存模式]: free=30.84GB, used=16.56GB, util=10.5%, mem_util=34.51%, score=(10.6431, 30.8447)
+2025-12-03 04:07:01,281 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 04:07:01,281 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 04:07:01,281 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 04:07:01,281 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 04:07:01,281 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=1)
+2025-12-03 04:07:01,283 - INFO - 🚀 Starting task (Queue 1, retry=1) on GPU 1
+2025-12-03 04:07:01,283 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:07:01,389 - INFO - 🔍 发现 2 个候选GPU: [0, 2]，启动智能选择...
+2025-12-03 04:07:01,390 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 04:07:03,534 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:07:03,535 - WARNING - 🔄 Task (Queue 1) failed (retry #2, error=exit_code_1), will retry soon
+2025-12-03 04:07:06,412 - INFO - GPU 0 [节省显存模式]: free=30.84GB, used=16.56GB, util=5.1%, mem_util=34.51%, score=(10.6431, 30.8447)
+2025-12-03 04:07:06,412 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 04:07:06,412 - INFO - ✅ 选择GPU 0: free=30.84GB, util=5.1%
+2025-12-03 04:07:06,413 - INFO - 🔒 GPU 0 acquired by queue 2
+2025-12-03 04:07:06,413 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 0 (retry=1)
+2025-12-03 04:07:06,415 - INFO - 🚀 Starting task (Queue 2, retry=1) on GPU 0
+2025-12-03 04:07:06,415 - INFO -    [1/1] [GPU 0] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:07:06,558 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 04:07:06,558 - INFO - 🔒 GPU 2 acquired by queue 3
+2025-12-03 04:07:06,558 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 2 (retry=1)
+2025-12-03 04:07:06,558 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 04:07:06,559 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=2)
+2025-12-03 04:07:06,561 - INFO - 🚀 Starting task (Queue 3, retry=1) on GPU 2
+2025-12-03 04:07:06,561 - INFO -    [1/1] [GPU 2] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:07:08,644 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:07:08,644 - WARNING - 🔄 Task (Queue 2) failed (retry #2, error=exit_code_1), will retry soon
+2025-12-03 04:07:08,644 - INFO - 🔓 GPU 0 released by queue 2
+2025-12-03 04:07:08,644 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=2)
+2025-12-03 04:07:08,798 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:07:08,799 - WARNING - 🔄 Task (Queue 3) failed (retry #2, error=exit_code_1), will retry soon
+2025-12-03 04:07:08,799 - INFO - 🔓 GPU 2 released by queue 3
+2025-12-03 04:07:08,799 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=2)
+2025-12-03 04:07:11,727 - INFO - 🔍 发现 3 个候选GPU: [0, 1, 2]，启动智能选择...
+2025-12-03 04:07:11,728 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 04:07:17,868 - INFO - GPU 0 [节省显存模式]: free=30.84GB, used=16.56GB, util=8.7%, mem_util=34.51%, score=(10.6431, 30.8447)
+2025-12-03 04:07:17,868 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 04:07:17,868 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 04:07:17,869 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 04:07:17,869 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 04:07:17,869 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=2)
+2025-12-03 04:07:17,870 - INFO - 🚀 Starting task (Queue 1, retry=2) on GPU 1
+2025-12-03 04:07:17,870 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:07:17,975 - INFO - 🔍 发现 2 个候选GPU: [0, 2]，启动智能选择...
+2025-12-03 04:07:17,975 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 04:07:20,104 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:07:20,105 - WARNING - 🔄 Task (Queue 1) failed (retry #3, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 04:07:23,048 - INFO - GPU 0 [节省显存模式]: free=30.84GB, used=16.56GB, util=6.7%, mem_util=34.51%, score=(10.6431, 30.8447)
+2025-12-03 04:07:23,048 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 04:07:23,048 - INFO - ✅ 选择GPU 0: free=30.84GB, util=6.7%
+2025-12-03 04:07:23,048 - INFO - 🔒 GPU 0 acquired by queue 2
+2025-12-03 04:07:23,049 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 0 (retry=2)
+2025-12-03 04:07:23,050 - INFO - 🚀 Starting task (Queue 2, retry=2) on GPU 0
+2025-12-03 04:07:23,050 - INFO -    [1/1] [GPU 0] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:07:23,198 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 04:07:23,198 - INFO - 🔒 GPU 2 acquired by queue 3
+2025-12-03 04:07:23,198 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 2 (retry=2)
+2025-12-03 04:07:23,199 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 04:07:23,199 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=3)
+2025-12-03 04:07:23,202 - INFO - 🚀 Starting task (Queue 3, retry=2) on GPU 2
+2025-12-03 04:07:23,202 - INFO -    [1/1] [GPU 2] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 04:07:25,279 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:07:25,280 - WARNING - 🔄 Task (Queue 2) failed (retry #3, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 04:07:25,280 - INFO - 🔓 GPU 0 released by queue 2
+2025-12-03 04:07:25,280 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=3)
+2025-12-03 04:07:25,421 - ERROR -    ❌ Command failed (exit code 1): bash: cannot set terminal process group (3348366): Inappropriate ioctl for device
+bash: no job control in this shell
+Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 04:07:25,421 - WARNING - 🔄 Task (Queue 3) failed (retry #3, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 04:07:25,421 - INFO - 🔓 GPU 2 released by queue 3
+2025-12-03 04:07:25,421 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=3)
+2025-12-03 04:07:28,202 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 592s
+2025-12-03 04:07:30,282 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 595s
+2025-12-03 04:07:30,422 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 595s
+2025-12-03 04:08:28,203 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 532s
+2025-12-03 04:08:30,283 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 535s
+2025-12-03 04:08:30,423 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 535s
+2025-12-03 04:09:28,203 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 472s
+2025-12-03 04:09:30,283 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 475s
+2025-12-03 04:09:30,423 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 475s
+2025-12-03 04:10:28,204 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 412s
+2025-12-03 04:10:30,284 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 415s
+2025-12-03 04:10:30,424 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 415s
+2025-12-03 04:11:28,204 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 352s
+2025-12-03 04:11:30,284 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 355s
+2025-12-03 04:11:30,424 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 355s
+2025-12-03 04:12:28,205 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 292s
+2025-12-03 04:12:30,284 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 295s
+2025-12-03 04:12:30,424 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 295s
+2025-12-03 04:13:28,205 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 232s
+2025-12-03 04:13:30,285 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 235s
+2025-12-03 04:13:30,424 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 235s

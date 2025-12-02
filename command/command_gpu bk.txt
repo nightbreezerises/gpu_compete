@@ -1,0 +1,40 @@
+# 任务配置文件格式说明：
+# 1. 每个任务块以空行分隔
+# 2. 第一行：队列ID（数字，可跟注释如 1 #队列ID）
+# 3. 中间行：命令列表（支持变量 {work_dir}）
+# 4. 最后一行：显存需求（数字，可跟注释如 20 #显存）
+# 5. 支持的变量：
+#    - {work_dir}: 工作目录
+#
+# 示例任务块：
+# 1 #队列ID
+# 命令1
+# 命令2
+# 命令3
+# 20 #显存需求
+#
+# ==================== 任务列表 ====================
+
+1
+bash /home/hdl/project/fgvr_test_new/scripts/run_pipeline.sh pet --experience_number 8 --classify_top_k 15
+25
+
+1
+bash /home/hdl/project/fgvr_test_new/scripts/run_pipeline.sh pet --experience_number 8 --classify_top_k 25
+25
+
+1
+bash /home/hdl/project/fgvr_test_new/scripts/run_pipeline.sh pet --experience_number 8 --classify_top_k 5
+25
+
+1
+bash /home/hdl/project/fgvr_test_new/scripts/run_pipeline.sh pet --experience_number 20 --classify_top_k 10
+25
+
+1
+bash /home/hdl/project/fgvr_test_new/scripts/run_pipeline.sh pet --experience_number 30 --classify_top_k 10
+25
+
+1
+bash /home/hdl/project/fgvr_test_new/scripts/run_pipeline.sh pet --experience_number 5 --classify_top_k 10
+25

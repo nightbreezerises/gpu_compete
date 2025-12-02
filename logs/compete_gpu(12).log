@@ -1,0 +1,325 @@
+2025-12-03 02:59:03,863 - INFO - 📝 Log file: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/logs/compete_gpu(12).log
+2025-12-03 02:59:03,970 - INFO - 🖥️ Using 3/10 GPUs: [0, 1, 2]
+2025-12-03 02:59:03,970 - INFO - 🖥️ Reserved GPUs: [3, 4, 5, 6, 7, 8, 9] (gpu_left=2, excess=5)
+2025-12-03 02:59:03,970 - INFO - 📋 Total tasks: 5, Queues: [1, 2, 3]
+2025-12-03 02:59:03,970 - INFO -    Queue 1: 2 tasks
+2025-12-03 02:59:03,970 - INFO -    Queue 2: 2 tasks
+2025-12-03 02:59:03,970 - INFO -    Queue 3: 1 tasks
+2025-12-03 02:59:04,116 - INFO - 🏁 Starting GPU competition scheduler
+2025-12-03 02:59:04,116 - INFO - ============================================================
+2025-12-03 02:59:04,116 - INFO - 📊 Tasks: Pending=5, Running=0, Completed=0, Failed=0
+2025-12-03 02:59:04,117 - INFO -    Queue 1: 🟢 IDLE, Pending=2, Completed=0
+2025-12-03 02:59:04,117 - INFO -    Queue 2: 🟢 IDLE, Pending=2, Completed=0
+2025-12-03 02:59:04,117 - INFO -    Queue 3: 🟢 IDLE, Pending=1, Completed=0
+2025-12-03 02:59:04,117 - INFO - ============================================================
+2025-12-03 02:59:04,117 - INFO - 🔧 Starting 3 queues with 3 workers
+2025-12-03 02:59:04,118 - INFO - 🚀 Queue 1: Starting with 2 tasks
+2025-12-03 02:59:04,119 - INFO - 🚀 Queue 2: Starting with 2 tasks
+2025-12-03 02:59:04,120 - INFO - 🚀 Queue 3: Starting with 1 tasks
+2025-12-03 02:59:04,370 - INFO - 🔍 发现 2 个候选GPU: [1, 2]，启动智能选择...
+2025-12-03 02:59:04,370 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 02:59:09,570 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 02:59:09,570 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 02:59:09,570 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 02:59:09,570 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 02:59:09,570 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=0)
+2025-12-03 02:59:09,572 - INFO - 🚀 Starting task (Queue 1, retry=0) on GPU 1
+2025-12-03 02:59:09,572 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 02:59:09,753 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 02:59:09,753 - INFO - 🔒 GPU 2 acquired by queue 2
+2025-12-03 02:59:09,753 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 2 (retry=0)
+2025-12-03 02:59:09,756 - INFO - 🚀 Starting task (Queue 2, retry=0) on GPU 2
+2025-12-03 02:59:09,756 - INFO -    [1/1] [GPU 2] python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory...
+2025-12-03 02:59:09,789 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 02:59:09,789 - WARNING - 🔄 Task (Queue 2) failed (retry #1, error=exit_code_1), will retry soon
+2025-12-03 02:59:09,810 - INFO - 🔓 GPU 2 released by queue 2
+2025-12-03 02:59:09,810 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=1)
+2025-12-03 02:59:10,031 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 02:59:10,032 - WARNING - 🔄 Task (Queue 1) failed (retry #1, error=exit_code_1), will retry soon
+2025-12-03 02:59:10,032 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 02:59:10,032 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=1)
+2025-12-03 02:59:13,043 - INFO - 🔍 发现 2 个候选GPU: [1, 2]，启动智能选择...
+2025-12-03 02:59:13,043 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 02:59:18,577 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 02:59:18,577 - INFO - GPU 2 [节省显存模式]: free=17.90GB, used=29.51GB, util=0.0%, mem_util=61.49%, score=(11.0037, 17.8950)
+2025-12-03 02:59:18,577 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 02:59:18,577 - INFO - 🔒 GPU 1 acquired by queue 3
+2025-12-03 02:59:18,578 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 1 (retry=0)
+2025-12-03 02:59:18,580 - INFO - 🚀 Starting task (Queue 3, retry=0) on GPU 1
+2025-12-03 02:59:18,580 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 02:59:19,037 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 02:59:19,037 - WARNING - 🔄 Task (Queue 3) failed (retry #1, error=exit_code_1), will retry soon
+2025-12-03 02:59:19,037 - INFO - 🔓 GPU 1 released by queue 3
+2025-12-03 02:59:19,037 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=1)
+2025-12-03 02:59:21,920 - INFO - ✅ GPU 1 available: 10.8GB free (唯一候选)
+2025-12-03 02:59:21,920 - INFO - 🔒 GPU 1 acquired by queue 2
+2025-12-03 02:59:21,921 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 1 (retry=1)
+2025-12-03 02:59:21,923 - INFO - 🚀 Starting task (Queue 2, retry=1) on GPU 1
+2025-12-03 02:59:21,923 - INFO -    [1/1] [GPU 1] python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory...
+2025-12-03 02:59:21,954 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 02:59:21,954 - WARNING - 🔄 Task (Queue 2) failed (retry #2, error=exit_code_1), will retry soon
+2025-12-03 02:59:22,033 - INFO - 🔓 GPU 1 released by queue 2
+2025-12-03 02:59:22,033 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=2)
+2025-12-03 02:59:24,243 - INFO - ✅ GPU 1 available: 10.8GB free (唯一候选)
+2025-12-03 02:59:24,243 - INFO - 🔒 GPU 1 acquired by queue 3
+2025-12-03 02:59:24,243 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 1 (retry=1)
+2025-12-03 02:59:24,245 - INFO - 🚀 Starting task (Queue 3, retry=1) on GPU 1
+2025-12-03 02:59:24,245 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 02:59:24,701 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 02:59:24,701 - WARNING - 🔄 Task (Queue 3) failed (retry #2, error=exit_code_1), will retry soon
+2025-12-03 02:59:24,701 - INFO - 🔓 GPU 1 released by queue 3
+2025-12-03 02:59:24,702 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=2)
+2025-12-03 02:59:25,264 - INFO - ✅ GPU 1 available: 10.8GB free (唯一候选)
+2025-12-03 02:59:25,264 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 02:59:25,264 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=1)
+2025-12-03 02:59:25,267 - INFO - 🚀 Starting task (Queue 1, retry=1) on GPU 1
+2025-12-03 02:59:25,267 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 02:59:25,740 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 02:59:25,740 - WARNING - 🔄 Task (Queue 1) failed (retry #2, error=exit_code_1), will retry soon
+2025-12-03 02:59:25,741 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 02:59:25,741 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=2)
+2025-12-03 02:59:27,317 - INFO - ✅ GPU 1 available: 10.8GB free (唯一候选)
+2025-12-03 02:59:27,318 - INFO - 🔒 GPU 1 acquired by queue 2
+2025-12-03 02:59:27,318 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 1 (retry=2)
+2025-12-03 02:59:27,319 - INFO - 🚀 Starting task (Queue 2, retry=2) on GPU 1
+2025-12-03 02:59:27,320 - INFO -    [1/1] [GPU 1] python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory...
+2025-12-03 02:59:27,351 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 02:59:27,351 - WARNING - 🔄 Task (Queue 2) failed (retry #3, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 02:59:27,351 - INFO - 🔓 GPU 1 released by queue 2
+2025-12-03 02:59:27,351 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=3)
+2025-12-03 02:59:29,917 - INFO - ✅ GPU 1 available: 10.8GB free (唯一候选)
+2025-12-03 02:59:29,917 - INFO - 🔒 GPU 1 acquired by queue 3
+2025-12-03 02:59:29,917 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 1 (retry=2)
+2025-12-03 02:59:29,919 - INFO - 🚀 Starting task (Queue 3, retry=2) on GPU 1
+2025-12-03 02:59:29,919 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 02:59:30,381 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 02:59:30,381 - WARNING - 🔄 Task (Queue 3) failed (retry #3, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 02:59:30,381 - INFO - 🔓 GPU 1 released by queue 3
+2025-12-03 02:59:30,381 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=3)
+2025-12-03 02:59:30,963 - INFO - ✅ GPU 1 available: 10.8GB free (唯一候选)
+2025-12-03 02:59:30,963 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 02:59:30,963 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=2)
+2025-12-03 02:59:30,964 - INFO - 🚀 Starting task (Queue 1, retry=2) on GPU 1
+2025-12-03 02:59:30,964 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 02:59:31,429 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 02:59:31,430 - WARNING - 🔄 Task (Queue 1) failed (retry #3, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 02:59:31,430 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 02:59:31,430 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=3)
+2025-12-03 02:59:32,353 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 595s
+2025-12-03 02:59:35,383 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 595s
+2025-12-03 02:59:36,432 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 595s
+2025-12-03 03:00:32,353 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 535s
+2025-12-03 03:00:35,384 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 535s
+2025-12-03 03:00:36,433 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 535s
+2025-12-03 03:01:32,354 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 475s
+2025-12-03 03:01:35,384 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 475s
+2025-12-03 03:01:36,433 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 475s
+2025-12-03 03:02:32,354 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 415s
+2025-12-03 03:02:35,385 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 415s
+2025-12-03 03:02:36,434 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 415s
+2025-12-03 03:03:32,355 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 355s
+2025-12-03 03:03:35,385 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 355s
+2025-12-03 03:03:36,434 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 355s
+2025-12-03 03:04:32,355 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 295s
+2025-12-03 03:04:35,386 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 295s
+2025-12-03 03:04:36,435 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 295s
+2025-12-03 03:05:32,355 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 235s
+2025-12-03 03:05:35,386 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 235s
+2025-12-03 03:05:36,435 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 235s
+2025-12-03 03:06:32,356 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 175s
+2025-12-03 03:06:35,386 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 175s
+2025-12-03 03:06:36,436 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 175s
+2025-12-03 03:07:32,356 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 115s
+2025-12-03 03:07:35,387 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 115s
+2025-12-03 03:07:36,436 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 115s
+2025-12-03 03:08:32,357 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 55s
+2025-12-03 03:08:35,387 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 55s
+2025-12-03 03:08:36,437 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 55s
+2025-12-03 03:09:27,571 - INFO - 🔍 发现 2 个候选GPU: [1, 2]，启动智能选择...
+2025-12-03 03:09:27,571 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 03:09:32,923 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 03:09:32,923 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 03:09:32,923 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 03:09:32,923 - INFO - 🔒 GPU 1 acquired by queue 2
+2025-12-03 03:09:32,923 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 1 (retry=3)
+2025-12-03 03:09:32,926 - INFO - 🚀 Starting task (Queue 2, retry=3) on GPU 1
+2025-12-03 03:09:32,927 - INFO -    [1/1] [GPU 1] python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory...
+2025-12-03 03:09:32,961 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 03:09:32,961 - WARNING - 🔄 Task (Queue 2) failed (retry #4, error=exit_code_1), will retry soon
+2025-12-03 03:09:33,085 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 03:09:33,085 - INFO - 🔒 GPU 2 acquired by queue 3
+2025-12-03 03:09:33,086 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 2 (retry=3)
+2025-12-03 03:09:33,088 - INFO - 🚀 Starting task (Queue 3, retry=3) on GPU 2
+2025-12-03 03:09:33,088 - INFO -    [1/1] [GPU 2] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 03:09:33,159 - INFO - 🔓 GPU 1 released by queue 2
+2025-12-03 03:09:33,159 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=4)
+2025-12-03 03:09:33,546 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 03:09:33,546 - WARNING - 🔄 Task (Queue 3) failed (retry #4, error=exit_code_1), will retry soon
+2025-12-03 03:09:33,546 - INFO - 🔓 GPU 2 released by queue 3
+2025-12-03 03:09:33,546 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=4)
+2025-12-03 03:09:36,382 - INFO - 🔍 发现 2 个候选GPU: [1, 2]，启动智能选择...
+2025-12-03 03:09:36,383 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 03:09:41,582 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 03:09:41,582 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 03:09:41,582 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 03:09:41,582 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 03:09:41,582 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=3)
+2025-12-03 03:09:41,584 - INFO - 🚀 Starting task (Queue 1, retry=3) on GPU 1
+2025-12-03 03:09:41,585 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 03:09:41,752 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 03:09:41,753 - INFO - 🔒 GPU 2 acquired by queue 2
+2025-12-03 03:09:41,753 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 2 (retry=4)
+2025-12-03 03:09:41,755 - INFO - 🚀 Starting task (Queue 2, retry=4) on GPU 2
+2025-12-03 03:09:41,755 - INFO -    [1/1] [GPU 2] python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory...
+2025-12-03 03:09:41,788 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 03:09:41,788 - WARNING - 🔄 Task (Queue 2) failed (retry #5, error=exit_code_1), will retry soon
+2025-12-03 03:09:41,813 - INFO - 🔓 GPU 2 released by queue 2
+2025-12-03 03:09:41,813 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=5)
+2025-12-03 03:09:42,045 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 03:09:42,045 - WARNING - 🔄 Task (Queue 1) failed (retry #4, error=exit_code_1), will retry soon
+2025-12-03 03:09:42,046 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 03:09:42,046 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=4)
+2025-12-03 03:09:45,006 - INFO - 🔍 发现 2 个候选GPU: [1, 2]，启动智能选择...
+2025-12-03 03:09:45,006 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 03:09:50,300 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 03:09:50,301 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 03:09:50,301 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 03:09:50,301 - INFO - 🔒 GPU 1 acquired by queue 3
+2025-12-03 03:09:50,301 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 1 (retry=4)
+2025-12-03 03:09:50,304 - INFO - 🚀 Starting task (Queue 3, retry=4) on GPU 1
+2025-12-03 03:09:50,304 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 03:09:50,480 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 03:09:50,480 - INFO - 🔒 GPU 2 acquired by queue 2
+2025-12-03 03:09:50,480 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 2 (retry=5)
+2025-12-03 03:09:50,482 - INFO - 🚀 Starting task (Queue 2, retry=5) on GPU 2
+2025-12-03 03:09:50,483 - INFO -    [1/1] [GPU 2] python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory...
+2025-12-03 03:09:50,515 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-03 03:09:50,515 - WARNING - 🔄 Task (Queue 2) failed (retry #6, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 03:09:50,555 - INFO - 🔓 GPU 2 released by queue 2
+2025-12-03 03:09:50,555 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=6)
+2025-12-03 03:09:50,763 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 03:09:50,763 - WARNING - 🔄 Task (Queue 3) failed (retry #5, error=exit_code_1), will retry soon
+2025-12-03 03:09:50,764 - INFO - 🔓 GPU 1 released by queue 3
+2025-12-03 03:09:50,764 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=5)
+2025-12-03 03:09:53,734 - INFO - 🔍 发现 2 个候选GPU: [1, 2]，启动智能选择...
+2025-12-03 03:09:53,734 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 03:09:55,557 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 595s
+2025-12-03 03:09:58,795 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 03:09:58,795 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 03:09:58,795 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 03:09:58,795 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 03:09:58,795 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=4)
+2025-12-03 03:09:58,797 - INFO - 🚀 Starting task (Queue 1, retry=4) on GPU 1
+2025-12-03 03:09:58,797 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 03:09:59,021 - INFO - ✅ GPU 2 available: 18.0GB free (唯一候选)
+2025-12-03 03:09:59,022 - INFO - 🔒 GPU 2 acquired by queue 3
+2025-12-03 03:09:59,022 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 2 (retry=5)
+2025-12-03 03:09:59,024 - INFO - 🚀 Starting task (Queue 3, retry=5) on GPU 2
+2025-12-03 03:09:59,024 - INFO -    [1/1] [GPU 2] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 03:09:59,251 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 03:09:59,252 - WARNING - 🔄 Task (Queue 1) failed (retry #5, error=exit_code_1), will retry soon
+2025-12-03 03:09:59,252 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 03:09:59,252 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=5)
+2025-12-03 03:09:59,481 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 03:09:59,482 - WARNING - 🔄 Task (Queue 3) failed (retry #6, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 03:09:59,482 - INFO - 🔓 GPU 2 released by queue 3
+2025-12-03 03:09:59,482 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=6)
+2025-12-03 03:10:04,428 - INFO - 🔍 发现 2 个候选GPU: [1, 2]，启动智能选择...
+2025-12-03 03:10:04,428 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-03 03:10:04,484 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 595s
+2025-12-03 03:10:09,809 - INFO - GPU 1 [节省显存模式]: free=10.80GB, used=36.61GB, util=0.0%, mem_util=76.28%, score=(8.2356, 10.7959)
+2025-12-03 03:10:09,809 - INFO - GPU 2 [节省显存模式]: free=17.97GB, used=29.43GB, util=0.0%, mem_util=61.33%, score=(11.0227, 17.9736)
+2025-12-03 03:10:09,810 - INFO - ✅ 选择GPU 1: free=10.80GB, util=0.0%
+2025-12-03 03:10:09,810 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 03:10:09,810 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=5)
+2025-12-03 03:10:09,811 - INFO - 🚀 Starting task (Queue 1, retry=5) on GPU 1
+2025-12-03 03:10:09,811 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 03:10:10,262 - ERROR -    ❌ Command failed (exit code 1): 
+CondaError: Run 'conda init' before 'conda activate'
+
+
+2025-12-03 03:10:10,262 - WARNING - 🔄 Task (Queue 1) failed (retry #6, error=exit_code_1), entering backoff for 10 minutes
+2025-12-03 03:10:10,262 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 03:10:10,263 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=6)
+2025-12-03 03:10:15,265 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 595s
+2025-12-03 03:10:55,558 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 535s
+2025-12-03 03:11:04,485 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 535s
+2025-12-03 03:11:15,265 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 535s
+2025-12-03 03:11:55,558 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 475s
+2025-12-03 03:12:04,485 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 475s
+2025-12-03 03:12:15,265 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 475s
+2025-12-03 03:12:55,558 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 415s
+2025-12-03 03:13:04,486 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 415s
+2025-12-03 03:13:15,266 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 415s
+2025-12-03 03:13:55,559 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 355s
+2025-12-03 03:14:04,486 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 355s
+2025-12-03 03:14:15,266 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 355s
+2025-12-03 03:14:55,559 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 295s
+2025-12-03 03:15:04,487 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 295s
+2025-12-03 03:15:15,267 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 295s
+2025-12-03 03:15:55,560 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 235s
+2025-12-03 03:16:04,487 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 235s
+2025-12-03 03:16:15,267 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 235s
+2025-12-03 03:16:55,560 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 175s
+2025-12-03 03:17:04,488 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 175s
+2025-12-03 03:17:15,268 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 175s
+2025-12-03 03:17:55,561 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 115s
+2025-12-03 03:18:04,488 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 115s
+2025-12-03 03:18:15,268 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 115s

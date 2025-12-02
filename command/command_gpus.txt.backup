@@ -1,0 +1,49 @@
+# 任务配置文件格式说明：
+# 1. 每个任务块以空行分隔
+# 2. 第一行：队列ID（数字，可跟注释如 1 #队列ID）
+# 3. 中间行：命令列表（支持变量 {work_dir}）
+# 4. 倒数第二行：GPU数量需求（数字，可跟注释如 1 #GPU数量需求）
+# 5. 最后一行：显存需求（数字，可跟注释如 20 #显存）
+# 6. 支持的变量：
+#    - {work_dir}: 工作目录
+#
+# 示例任务块：
+# 1 #队列ID
+# 命令1
+# 命令2
+# 命令3
+# 1 #GPU数量需求
+# 20 #显存需求
+#
+# ==================== 任务列表 ====================
+# 测试任务：队列内串行，队间并行
+
+# 队列1 - 任务1
+1 #队列ID
+python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1 #GPU数量需求
+1 #显存需求(GB)
+
+# 队列1 - 任务2
+1 #队列ID
+python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1 #GPU数量需求
+1 #显存需求(GB)
+
+# 队列2 - 任务1
+2 #队列ID
+python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1 #GPU数量需求
+1 #显存需求(GB)
+
+# 队列2 - 任务2
+2 #队列ID
+python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1 #GPU数量需求
+1 #显存需求(GB)
+
+# 队列3 - 任务1
+3 #队列ID
+python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1 #GPU数量需求
+1 #显存需求(GB)

@@ -1,0 +1,8 @@
+target-yaml-path: ../config/gpu_manage.yaml # 要操作的yaml文件路径（支持绝对路径和相对路径，相对路径是相对于当前.yaml文件的）
+log-dir: ./logs/ # 日志存储目录
+port: 29214 # 当前任务运行端口（如果冲突了自动换一个）
+allow-lan: true # 允许来自局域网外部主机的访问
+bind-address: 0.0.0.0 # 绑定地址（0.0.0.0 允许外部访问，127.0.0.1 仅本机）
+log-level: info  # 日志级别
+secret: "omniai315fgvr_gpu_config" # 访问密钥（用于API认证）
+

@@ -1,0 +1,37 @@
+# 任务配置文件格式说明：
+# 1. 每个任务块以空行分隔
+# 2. 第一行：队列ID（数字，可跟注释如 '1 #队列ID'）
+# 3. 中间行：命令列表（建议用引号包围，支持变量 {work_dir} 和 {uni_id}）
+# 4. 最后一行：显存需求（数字，可跟注释如 '20 #显存'）
+# 5. 支持的变量：
+#    - {work_dir}: 工作目录（脚本父目录）
+#    - {uni_id}: 唯一标识符（自动生成）
+#
+# 示例任务块：
+# 1 #队列ID
+# "命令1"
+# "命令2"
+# "命令3"
+# 20 #显存需求
+#
+# ==================== 任务列表 ====================
+
+1
+conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1
+
+1
+conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1
+
+2
+conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1
+
+2
+conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1
+
+3
+conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py 60 500
+1
