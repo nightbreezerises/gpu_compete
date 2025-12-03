@@ -16159,3 +16159,199 @@ ModuleNotFoundError: No module named 'torch'
 2025-12-04 01:07:40,290 - WARNING - 🔄 Task (Queue 3) failed (retry #3, error=exit_code_1), entering backoff for 10 minutes
 2025-12-04 01:07:40,290 - INFO - 🔓 GPU 5 released by queue 3
 2025-12-04 01:07:40,290 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=3)
+2025-12-04 01:07:44,386 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 579s
+2025-12-04 01:07:44,386 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 588s
+2025-12-04 01:07:45,292 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 595s
+2025-12-04 01:08:44,387 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 519s
+2025-12-04 01:08:44,387 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 528s
+2025-12-04 01:08:45,293 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 535s
+2025-12-04 01:09:44,387 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 459s
+2025-12-04 01:09:44,388 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 468s
+2025-12-04 01:09:45,293 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 475s
+2025-12-04 01:10:44,388 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 399s
+2025-12-04 01:10:44,388 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 408s
+2025-12-04 01:10:45,293 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 415s
+2025-12-04 01:11:44,389 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 339s
+2025-12-04 01:11:44,389 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 348s
+2025-12-04 01:11:45,294 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 355s
+2025-12-04 01:12:44,389 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 279s
+2025-12-04 01:12:44,389 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 288s
+2025-12-04 01:12:45,294 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 295s
+2025-12-04 01:13:44,390 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 228s
+2025-12-04 01:13:44,390 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 219s
+2025-12-04 01:13:45,295 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 235s
+2025-12-04 01:14:44,390 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 168s
+2025-12-04 01:14:44,391 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 159s
+2025-12-04 01:14:45,295 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 175s
+2025-12-04 01:15:44,391 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 108s
+2025-12-04 01:15:44,391 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 99s
+2025-12-04 01:15:45,296 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 115s
+2025-12-04 01:16:44,392 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 48s
+2025-12-04 01:16:44,392 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 39s
+2025-12-04 01:16:45,297 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 55s
+2025-12-04 01:17:25,219 - INFO - 🔍 发现 4 个候选GPU: [4, 5, 8, 9]，启动智能选择...
+2025-12-04 01:17:25,220 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:17:34,087 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=12.3%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:17:34,087 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:17:34,087 - INFO - GPU 8 [节省显存模式]: free=8.12GB, used=39.28GB, util=15.1%, mem_util=81.86%, score=(6.6470, 8.1201)
+2025-12-04 01:17:34,088 - INFO - GPU 9 [节省显存模式]: free=45.67GB, used=1.74GB, util=0.0%, mem_util=3.62%, score=(1.6541, 45.6650)
+2025-12-04 01:17:34,088 - INFO - ✅ 选择GPU 9: free=45.67GB, util=0.0%
+2025-12-04 01:17:34,088 - INFO - 🔒 GPU 9 acquired by queue 1
+2025-12-04 01:17:34,088 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 9 (retry=3)
+2025-12-04 01:17:34,090 - INFO - 🚀 Starting task (Queue 1, retry=3) on GPU 9
+2025-12-04 01:17:34,090 - INFO -    [1/1] [GPU 9] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:17:34,895 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:17:34,896 - WARNING - 🔄 Task (Queue 1) failed (retry #4, error=exit_code_1), will retry soon
+2025-12-04 01:17:35,455 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 8]，启动智能选择...
+2025-12-04 01:17:35,455 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:17:42,626 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=15.2%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:17:42,626 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:17:42,626 - INFO - GPU 8 [节省显存模式]: free=8.12GB, used=39.28GB, util=34.3%, mem_util=81.86%, score=(6.6470, 8.1201)
+2025-12-04 01:17:42,626 - INFO - ✅ 选择GPU 8: free=8.12GB, util=34.3%
+2025-12-04 01:17:42,626 - INFO - 🔒 GPU 8 acquired by queue 2
+2025-12-04 01:17:42,626 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 8 (retry=3)
+2025-12-04 01:17:42,626 - INFO - 🔓 GPU 9 released by queue 1
+2025-12-04 01:17:42,627 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=4)
+2025-12-04 01:17:42,630 - INFO - 🚀 Starting task (Queue 2, retry=3) on GPU 8
+2025-12-04 01:17:42,630 - INFO -    [1/1] [GPU 8] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:17:43,288 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:17:43,288 - WARNING - 🔄 Task (Queue 2) failed (retry #4, error=exit_code_1), will retry soon
+2025-12-04 01:17:44,136 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 9]，启动智能选择...
+2025-12-04 01:17:44,136 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:17:51,562 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=15.9%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:17:51,562 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:17:51,562 - INFO - GPU 9 [节省显存模式]: free=45.67GB, used=1.74GB, util=0.0%, mem_util=3.62%, score=(1.6541, 45.6650)
+2025-12-04 01:17:51,562 - INFO - ✅ 选择GPU 9: free=45.67GB, util=0.0%
+2025-12-04 01:17:51,562 - INFO - 🔒 GPU 9 acquired by queue 3
+2025-12-04 01:17:51,563 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 9 (retry=3)
+2025-12-04 01:17:51,563 - INFO - 🔓 GPU 8 released by queue 2
+2025-12-04 01:17:51,563 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=4)
+2025-12-04 01:17:51,566 - INFO - 🚀 Starting task (Queue 3, retry=3) on GPU 9
+2025-12-04 01:17:51,566 - INFO -    [1/1] [GPU 9] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:17:52,411 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:17:52,411 - WARNING - 🔄 Task (Queue 3) failed (retry #4, error=exit_code_1), will retry soon
+2025-12-04 01:17:53,040 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 8]，启动智能选择...
+2025-12-04 01:17:53,041 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:18:00,279 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=9.9%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:18:00,279 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:18:00,279 - INFO - GPU 8 [节省显存模式]: free=8.12GB, used=39.28GB, util=21.4%, mem_util=81.86%, score=(6.6470, 8.1201)
+2025-12-04 01:18:00,279 - INFO - ✅ 选择GPU 8: free=8.12GB, util=21.4%
+2025-12-04 01:18:00,279 - INFO - 🔒 GPU 8 acquired by queue 1
+2025-12-04 01:18:00,279 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 8 (retry=4)
+2025-12-04 01:18:00,279 - INFO - 🔓 GPU 9 released by queue 3
+2025-12-04 01:18:00,280 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=4)
+2025-12-04 01:18:00,283 - INFO - 🚀 Starting task (Queue 1, retry=4) on GPU 8
+2025-12-04 01:18:00,283 - INFO -    [1/1] [GPU 8] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:18:00,966 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:18:00,966 - WARNING - 🔄 Task (Queue 1) failed (retry #5, error=exit_code_1), will retry soon
+2025-12-04 01:18:01,705 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 9]，启动智能选择...
+2025-12-04 01:18:01,705 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:18:09,476 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=18.3%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:18:09,477 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:18:09,477 - INFO - GPU 9 [节省显存模式]: free=45.67GB, used=1.74GB, util=0.0%, mem_util=3.62%, score=(1.6541, 45.6650)
+2025-12-04 01:18:09,477 - INFO - ✅ 选择GPU 9: free=45.67GB, util=0.0%
+2025-12-04 01:18:09,477 - INFO - 🔒 GPU 9 acquired by queue 2
+2025-12-04 01:18:09,477 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 9 (retry=4)
+2025-12-04 01:18:09,478 - INFO - 🔓 GPU 8 released by queue 1
+2025-12-04 01:18:09,478 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=5)
+2025-12-04 01:18:09,481 - INFO - 🚀 Starting task (Queue 2, retry=4) on GPU 9
+2025-12-04 01:18:09,482 - INFO -    [1/1] [GPU 9] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:18:10,143 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:18:10,143 - WARNING - 🔄 Task (Queue 2) failed (retry #5, error=exit_code_1), will retry soon
+2025-12-04 01:18:10,865 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 8]，启动智能选择...
+2025-12-04 01:18:10,865 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:18:18,181 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=25.1%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:18:18,181 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:18:18,181 - INFO - GPU 8 [节省显存模式]: free=8.12GB, used=39.28GB, util=11.9%, mem_util=81.86%, score=(6.6470, 8.1201)
+2025-12-04 01:18:18,181 - INFO - ✅ 选择GPU 8: free=8.12GB, util=11.9%
+2025-12-04 01:18:18,181 - INFO - 🔒 GPU 8 acquired by queue 3
+2025-12-04 01:18:18,181 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 8 (retry=4)
+2025-12-04 01:18:18,181 - INFO - 🔓 GPU 9 released by queue 2
+2025-12-04 01:18:18,182 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=5)
+2025-12-04 01:18:18,185 - INFO - 🚀 Starting task (Queue 3, retry=4) on GPU 8
+2025-12-04 01:18:18,186 - INFO -    [1/1] [GPU 8] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:18:19,124 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:18:19,124 - WARNING - 🔄 Task (Queue 3) failed (retry #5, error=exit_code_1), will retry soon
+2025-12-04 01:18:19,658 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 9]，启动智能选择...
+2025-12-04 01:18:19,659 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:18:27,304 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=19.2%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:18:27,304 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:18:27,304 - INFO - GPU 9 [节省显存模式]: free=45.67GB, used=1.74GB, util=0.0%, mem_util=3.62%, score=(1.6541, 45.6650)
+2025-12-04 01:18:27,304 - INFO - ✅ 选择GPU 9: free=45.67GB, util=0.0%
+2025-12-04 01:18:27,305 - INFO - 🔒 GPU 9 acquired by queue 1
+2025-12-04 01:18:27,305 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 9 (retry=5)
+2025-12-04 01:18:27,305 - INFO - 🔓 GPU 8 released by queue 3
+2025-12-04 01:18:27,305 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=5)
+2025-12-04 01:18:27,308 - INFO - 🚀 Starting task (Queue 1, retry=5) on GPU 9
+2025-12-04 01:18:27,308 - INFO -    [1/1] [GPU 9] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:18:28,136 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:18:28,137 - WARNING - 🔄 Task (Queue 1) failed (retry #6, error=exit_code_1), entering backoff for 10 minutes
+2025-12-04 01:18:28,678 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 8]，启动智能选择...
+2025-12-04 01:18:28,678 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:18:36,047 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=11.1%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:18:36,047 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:18:36,047 - INFO - GPU 8 [节省显存模式]: free=8.12GB, used=39.28GB, util=11.9%, mem_util=81.86%, score=(6.6470, 8.1201)
+2025-12-04 01:18:36,047 - INFO - ✅ 选择GPU 8: free=8.12GB, util=11.9%
+2025-12-04 01:18:36,047 - INFO - 🔒 GPU 8 acquired by queue 2
+2025-12-04 01:18:36,047 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 8 (retry=5)
+2025-12-04 01:18:36,047 - INFO - 🔓 GPU 9 released by queue 1
+2025-12-04 01:18:36,048 - INFO - 🔄 Queue 1: Task 1/2 will retry (count=6)
+2025-12-04 01:18:36,050 - INFO - 🚀 Starting task (Queue 2, retry=5) on GPU 8
+2025-12-04 01:18:36,051 - INFO -    [1/1] [GPU 8] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:18:36,836 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:18:36,836 - WARNING - 🔄 Task (Queue 2) failed (retry #6, error=exit_code_1), entering backoff for 10 minutes
+2025-12-04 01:18:37,576 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 9]，启动智能选择...
+2025-12-04 01:18:37,576 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 01:18:41,051 - INFO - ⏳ Queue 1: Task 1/2 in backoff, waiting 587s
+2025-12-04 01:18:45,061 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=28.1%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 01:18:45,061 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 01:18:45,061 - INFO - GPU 9 [节省显存模式]: free=45.67GB, used=1.74GB, util=0.0%, mem_util=3.62%, score=(1.6541, 45.6650)
+2025-12-04 01:18:45,061 - INFO - ✅ 选择GPU 9: free=45.67GB, util=0.0%
+2025-12-04 01:18:45,061 - INFO - 🔒 GPU 9 acquired by queue 3
+2025-12-04 01:18:45,061 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 9 (retry=5)
+2025-12-04 01:18:45,061 - INFO - 🔓 GPU 8 released by queue 2
+2025-12-04 01:18:45,062 - INFO - 🔄 Queue 2: Task 1/2 will retry (count=6)
+2025-12-04 01:18:45,064 - INFO - 🚀 Starting task (Queue 3, retry=5) on GPU 9
+2025-12-04 01:18:45,064 - INFO -    [1/1] [GPU 9] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 01:18:45,938 - ERROR -    ❌ Command failed (exit code 1): Traceback (most recent call last):
+  File "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/test_gpu_memory.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+2025-12-04 01:18:45,938 - WARNING - 🔄 Task (Queue 3) failed (retry #6, error=exit_code_1), entering backoff for 10 minutes
+2025-12-04 01:18:45,938 - INFO - 🔓 GPU 9 released by queue 3
+2025-12-04 01:18:45,938 - INFO - 🔄 Queue 3: Task 1/1 will retry (count=6)
+2025-12-04 01:18:50,065 - INFO - ⏳ Queue 2: Task 1/2 in backoff, waiting 587s
+2025-12-04 01:18:50,940 - INFO - ⏳ Queue 3: Task 1/1 in backoff, waiting 595s

@@ -59,9 +59,9 @@
           "status": "retrying",
           "current_gpu": 9,
           "gpus": [],
-          "retry_count": 3,
+          "retry_count": 6,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:07:22.881670",
+          "started_at": "2025-12-04T01:18:27.307476",
           "finished_at": null
         },
         {
@@ -103,9 +103,9 @@
           "status": "retrying",
           "current_gpu": 8,
           "gpus": [],
-          "retry_count": 3,
+          "retry_count": 6,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:07:31.869041",
+          "started_at": "2025-12-04T01:18:36.050104",
           "finished_at": null
         },
         {
@@ -134,7 +134,7 @@
       "completed_tasks": 0,
       "failed_tasks": 0,
       "current_task": "任务 1/1 失败，准备重试",
-      "current_gpu": 5,
+      "current_gpu": 9,
       "last_error": "exit_code_1",
       "processes": [
         {
@@ -145,11 +145,11 @@
           "memory_gb": 1,
           "gpu_count": 1,
           "status": "retrying",
-          "current_gpu": 5,
+          "current_gpu": 9,
           "gpus": [],
-          "retry_count": 3,
+          "retry_count": 6,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:07:39.385773",
+          "started_at": "2025-12-04T01:18:45.063715",
           "finished_at": null
         }
       ]

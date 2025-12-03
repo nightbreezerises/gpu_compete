@@ -4,5 +4,5 @@ port: 29214 # 当前任务运行端口（如果冲突了自动换一个）
 allow-lan: true # 允许来自局域网外部主机的访问
 bind-address: 0.0.0.0 # 绑定地址（0.0.0.0 允许外部访问，127.0.0.1 仅本机）
 log-level: debug # 日志级别
-secret: "omniai315fgvr_gpu_config" # 访问密钥（用于API认证）
+secret: "omniai315gpu" # 访问密钥（用于API认证）
 
