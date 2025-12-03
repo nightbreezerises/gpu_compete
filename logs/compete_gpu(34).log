@@ -1,0 +1,66 @@
+2025-12-03 19:55:42,291 - INFO - 📝 Log file: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/logs/compete_gpu(34).log
+2025-12-03 19:55:42,440 - INFO - 🖥️ Using 3/10 GPUs: [0, 1, 2]
+2025-12-03 19:55:42,440 - INFO - 🖥️ Reserved GPUs: [3, 4, 5, 6, 7, 8, 9] (gpu_left=2, excess=5)
+2025-12-03 19:55:42,441 - INFO - 📋 Total tasks: 5, Queues: [1, 2, 3]
+2025-12-03 19:55:42,441 - INFO -    Queue 1: 2 tasks
+2025-12-03 19:55:42,441 - INFO -    Queue 2: 2 tasks
+2025-12-03 19:55:42,441 - INFO -    Queue 3: 1 tasks
+2025-12-03 19:55:42,603 - INFO - 🏁 Starting GPU competition scheduler
+2025-12-03 19:55:42,603 - INFO - ============================================================
+2025-12-03 19:55:42,603 - INFO - 📊 Tasks: Pending=5, Running=0, Completed=0, Failed=0
+2025-12-03 19:55:42,603 - INFO -    Queue 1: 🟢 IDLE, Pending=2, Completed=0
+2025-12-03 19:55:42,603 - INFO -    Queue 2: 🟢 IDLE, Pending=2, Completed=0
+2025-12-03 19:55:42,603 - INFO -    Queue 3: 🟢 IDLE, Pending=1, Completed=0
+2025-12-03 19:55:42,603 - INFO - ============================================================
+2025-12-03 19:55:42,603 - INFO - 🔧 Starting 3 queues with 3 workers
+2025-12-03 19:55:42,606 - INFO - 🚀 Queue 1: Starting with 2 tasks
+2025-12-03 19:55:42,606 - INFO - 🚀 Queue 2: Starting with 2 tasks
+2025-12-03 19:55:42,607 - INFO - 🚀 Queue 3: Starting with 1 tasks
+2025-12-03 20:20:35,905 - INFO - ✅ GPU 1 available: 21.0GB free (唯一候选)
+2025-12-03 20:20:35,906 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 20:20:35,906 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 1 (retry=0)
+2025-12-03 20:20:35,908 - INFO - 🚀 Starting task (Queue 1, retry=0) on GPU 1
+2025-12-03 20:20:35,908 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 20:21:43,242 - INFO - ✅ Task (Queue 1) completed successfully
+2025-12-03 20:21:43,243 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 20:21:43,495 - INFO - ✅ GPU 1 available: 21.0GB free (唯一候选)
+2025-12-03 20:21:43,495 - INFO - 🔒 GPU 1 acquired by queue 1
+2025-12-03 20:21:43,495 - INFO - 🎯 Queue 1: Executing task 2/2 on GPU 1 (retry=0)
+2025-12-03 20:21:43,497 - INFO - 🚀 Starting task (Queue 1, retry=0) on GPU 1
+2025-12-03 20:21:43,497 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 20:22:51,309 - INFO - ✅ Task (Queue 1) completed successfully
+2025-12-03 20:22:51,310 - INFO - 🔓 GPU 1 released by queue 1
+2025-12-03 20:22:51,312 - INFO - 🏁 Queue 1: Finished. Completed 2/2 tasks
+2025-12-03 20:22:51,313 - INFO - ✅ Queue 1 completed
+2025-12-03 20:22:51,672 - INFO - ✅ GPU 1 available: 21.0GB free (唯一候选)
+2025-12-03 20:22:51,672 - INFO - 🔒 GPU 1 acquired by queue 2
+2025-12-03 20:22:51,672 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 1 (retry=0)
+2025-12-03 20:22:51,675 - INFO - 🚀 Starting task (Queue 2, retry=0) on GPU 1
+2025-12-03 20:22:51,675 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 20:23:58,500 - INFO - ✅ Task (Queue 2) completed successfully
+2025-12-03 20:23:58,505 - INFO - 🔓 GPU 1 released by queue 2
+2025-12-03 20:23:58,835 - INFO - ✅ GPU 1 available: 19.9GB free (唯一候选)
+2025-12-03 20:23:58,835 - INFO - 🔒 GPU 1 acquired by queue 2
+2025-12-03 20:23:58,835 - INFO - 🎯 Queue 2: Executing task 2/2 on GPU 1 (retry=0)
+2025-12-03 20:23:58,837 - INFO - 🚀 Starting task (Queue 2, retry=0) on GPU 1
+2025-12-03 20:23:58,837 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 20:25:05,343 - INFO - ✅ Task (Queue 2) completed successfully
+2025-12-03 20:25:05,343 - INFO - 🔓 GPU 1 released by queue 2
+2025-12-03 20:25:05,346 - INFO - 🏁 Queue 2: Finished. Completed 2/2 tasks
+2025-12-03 20:25:05,347 - INFO - ✅ Queue 2 completed
+2025-12-03 20:25:08,334 - INFO - ✅ GPU 1 available: 19.9GB free (唯一候选)
+2025-12-03 20:25:08,334 - INFO - 🔒 GPU 1 acquired by queue 3
+2025-12-03 20:25:08,335 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 1 (retry=0)
+2025-12-03 20:25:08,359 - INFO - 🚀 Starting task (Queue 3, retry=0) on GPU 1
+2025-12-03 20:25:08,360 - INFO -    [1/1] [GPU 1] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-03 20:26:15,653 - INFO - ✅ Task (Queue 3) completed successfully
+2025-12-03 20:26:15,654 - INFO - 🔓 GPU 1 released by queue 3
+2025-12-03 20:26:15,656 - INFO - 🏁 Queue 3: Finished. Completed 1/1 tasks
+2025-12-03 20:26:15,657 - INFO - ✅ Queue 3 completed
+2025-12-03 20:26:15,657 - INFO - ============================================================
+2025-12-03 20:26:15,657 - INFO - 📊 Tasks: Pending=0, Running=0, Completed=5, Failed=0
+2025-12-03 20:26:15,657 - INFO -    Queue 1: 🟢 IDLE, Pending=0, Completed=2
+2025-12-03 20:26:15,657 - INFO -    Queue 2: 🟢 IDLE, Pending=0, Completed=2
+2025-12-03 20:26:15,658 - INFO -    Queue 3: 🟢 IDLE, Pending=0, Completed=1
+2025-12-03 20:26:15,658 - INFO - ============================================================
+2025-12-03 20:26:15,658 - INFO - 🎉 All queues finished!

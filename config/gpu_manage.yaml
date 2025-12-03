@@ -10,10 +10,10 @@ memory_save_mode: true # 是否采用节省显存模式，默认采用节省显�
 # GPU 配置
 compete_gpus: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]  # 手动指定的 GPU 列表
 use_all_gpus: true  # 是否自动探测所有 GPU
-gpu_left: 2  # 计划剩余几张卡给其他用户（实际不一定）
+gpu_left: 1  # 计划剩余几张卡给其他用户（实际不一定）
 min_gpu: 2  # 用户至少用几张卡
-max_gpu: 3  # 用户最多用几张卡
-# 实际用的卡是 min(max_gpu,max(min_gpu,available_gpus-gpu_left)),其中available_gpus是当前可用的GPU
+max_gpu: 9  # 用户最多用几张卡
+# 最多用的卡数目是 min(max_gpu,max(min_gpu,available_gpus-gpu_left)),其中available_gpus是当前可用的GPU
 
 # 重试配置
 retry_config:

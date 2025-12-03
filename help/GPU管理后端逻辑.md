@@ -10,6 +10,7 @@
 
 - **队内串行**：同一队列的任务严格按顺序执行，前一个任务完成后才能启动下一个
 - **队间并行**：不同队列的任务可以同时在不同 GPU 上执行
+- **动态GPU预留**：运行时动态计算可用GPU配额，而非开局静态预留
 - **重试机制**：任务失败后根据配置进行重试和退避
 - **智能GPU选择**：多个可用GPU时使用高频采样策略选择最优GPU
 
@@ -115,55 +116,43 @@ gpus_command_file: "command/command_gpus.txt" # 多GPU配置文件
 - `compete_gpus`: 手动指定的 GPU 列表
 - `use_all_gpus`: 是否自动探测所有可用 GPU
 
-**2. GPU 预留配置**：
-- `gpu_left`: 预留给其他用户的 GPU 数量
+**2. 动态GPU预留配置**：
+- `gpu_left`: 计划预留给其他用户的 GPU 数量
 - `min_gpu`: 用户至少使用的 GPU 数量
 - `max_gpu`: 用户最多使用的 GPU 数量
 
-**3. GPU 分配公式**：
+**3. 动态预留逻辑**：
+
+与静态预留不同，动态预留允许用户在所有GPU上运行进程，但同时使用的GPU总数受限制：
+
 ```
-实际使用GPU数量 = min(max_gpu, max(min_gpu, available_gpus - gpu_left))
+最大允许GPU数量 = min(max_gpu, max(min_gpu, available_gpus - gpu_left))
 ```
 
 其中：
-- `available_gpus`: 当前可用的 GPU 总数
-- `gpu_left`: 预留给其他用户的 GPU 数量
+- `available_gpus`: 当前显存充足的 GPU 数量（不考虑用户占用）
+- `gpu_left`: 计划预留给其他用户的 GPU 数量
 - `min_gpu`: 用户至少需要的 GPU 数量
 - `max_gpu`: 用户最多需要的 GPU 数量
 
-**4. 分配示例**：
+**4. 动态预留示例**：
 ```yaml
-# 示例1：10张卡，预留1张，至少用3张，最多用3张
-# total=10, gpu_left=1, min_gpu=3, max_gpu=3
-# available_after_reservation = 10-1 = 9
-# min_required = max(3, 9) = 9
-# target_count = min(3, 9) = 3
-# 使用GPU: [0,1,2] (3张)
-# 预留GPU: [3,4,5,6,7,8,9] (7张)
+# 示例：10张卡，gpu_left=2，min_gpu=2，max_gpu=7
+# 当前状态：卡1、3显存不足，卡0、2、4、6当前用户在使用
+#
+# available_gpus = 8 (显存充足的卡数)
+# max_allowed = min(7, max(2, 8-2)) = min(7, 6) = 6
+# current_used = 4 (用户已在使用的卡数)
+# 可再分配 = 6 - 4 = 2张
+#
+# 如果有 3 个队头进程等待GPU：
+# - 可以分配 2 个进程到可用的卡（5、7、8、9中选择2张）
+# - 第 3 个进程需要等待其他任务完成释放GPU
 
-# 示例2：4张卡，预留1张，至少用3张，最多用3张
-# total=4, gpu_left=1, min_gpu=3, max_gpu=3
-# available_after_reservation = 4-1 = 3
-# min_required = max(3, 3) = 3
-# target_count = min(3, 3) = 3
-# 使用GPU: [0,1,2] (3张)
-# 预留GPU: [3] (1张)
-
-# 示例3：3张卡，预留2张，至少用3张，最多用3张
-# total=3, gpu_left=2, min_gpu=3, max_gpu=3
-# available_after_reservation = 3-2 = 1
-# min_required = max(3, 1) = 3
-# target_count = min(3, 3) = 3
-# 使用GPU: [0,1,2] (3张)
-# 预留GPU: [] (0张，无法满足预留要求)
-
-# 示例4：10张卡，预留1张，至少用2张，最多用5张
-# total=10, gpu_left=1, min_gpu=2, max_gpu=5
-# available_after_reservation = 10-1 = 9
-# min_required = max(2, 9) = 9
-# target_count = min(5, 9) = 5
-# 使用GPU: [0,1,2,3,4] (5张)
-# 预留GPU: [5,6,7,8,9] (5张)
+# 动态预留的优势：
+# 1. 用户可以在所有卡上运行，不限于固定的几张卡
+# 2. 当其他用户释放GPU时，可以动态利用新释放的卡
+# 3. 更灵活的资源分配，提高GPU利用率
 ```
 
 #### 工作目录配置详解
@@ -292,9 +281,9 @@ commands_path = parse_command_file_path(args, SCRIPT_DIR, 'command.txt')
 - **队列间并行**：不同队列的任务可以同时在不同 GPU 上执行
 - **随机调度**：空闲队列的头部任务随机打乱顺序进行公平调度
 - **重试机制**：进程发生异常后要进行重试，重试超上限（3次）后退避一段时间（10分钟）再进行下一次重试
-- **GPU 预留**：根据配置预留指定数量的 GPU 给其他用户使用
+- **动态GPU预留**：运行时动态计算可用GPU配额，而非开局静态预留
 
-整体流程：**任务配置 → 队列分组 → GPU 动态分配 → 空闲队列头任务随机调度 → 逐个分配 GPU → 等待进程确认 → 状态监控**。
+整体流程：**任务配置 → 队列分组 → 动态配额计算 → 空闲队列头任务随机调度 → 逐个分配 GPU → 等待进程确认 → 状态监控**。
 
 ### 多GPU模式（main_gpus.py）
 
@@ -305,9 +294,10 @@ commands_path = parse_command_file_path(args, SCRIPT_DIR, 'command.txt')
 - **优先大任务**：优先调度GPU需求量大的任务
 - **其次优先小队列**：GPU需求量相同时，优先调度队列ID小的任务
 - **多GPU分配**：每个任务可以使用多张GPU，通过 `CUDA_VISIBLE_DEVICES=0,1,2` 设置
+- **动态GPU预留**：运行时动态计算可用GPU配额
 - **重试机制**：与单GPU模式相同
 
-整体流程：**任务配置 → 队列分组 → GPU 动态分配 → 空闲队列头任务优先级排序 → 逐个分配多GPU → 等待进程确认 → 状态监控**。
+整体流程：**任务配置 → 队列分组 → 动态配额计算 → 空闲队列头任务优先级排序 → 逐个分配多GPU → 等待进程确认 → 状态监控**。
 
 #### 多GPU调度优先级
 
@@ -421,11 +411,11 @@ tasks = parse_command_file('command/command_gpus.txt')
    - `use_all_gpus=True`：自动探测所有可用 GPU
    - `use_all_gpus=False`：使用 `compete_gpus` 指定的 GPU 列表
 
-6. **GPU 动态分配**：
-   - 计算可用 GPU 数量：`min(max_gpu, max(min_gpu, available_gpus - gpu_left))`
-   - 确保不超过实际可用的 GPU 数量
-   - 从前面取目标数量的 GPU（编号较小的优先使用）
-   - 记录预留和使用的 GPU 信息
+6. **动态GPU配额计算**：
+   - 所有GPU都可以使用，不静态预留
+   - 运行时动态计算最大允许GPU数：`min(max_gpu, max(min_gpu, available_gpus - gpu_left))`
+   - 检查当前用户已使用的GPU数（调度器内部 + 外部进程）
+   - 只有当 `当前使用数 + 请求数 <= 最大允许数` 时才分配GPU
 
 7. **GPU 可用性检查**（`find_available_gpu` / `find_available_gpus`）：
    - **内部占用检查**（非极限模式）：检查调度器内部是否有其他任务正在使用该GPU

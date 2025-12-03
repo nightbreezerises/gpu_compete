@@ -1,0 +1,114 @@
+2025-12-04 00:56:57,615 - INFO - 📝 Log file: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/logs/compete_gpu(37).log
+2025-12-04 00:56:57,615 - INFO - 📄 Command file: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command/command_gpu.txt
+2025-12-04 00:56:57,763 - INFO - 🖥️ Total GPUs available: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2025-12-04 00:56:57,763 - INFO - 🖥️ Dynamic reservation config: gpu_left=1, min_gpu=2, max_gpu=8
+2025-12-04 00:56:57,763 - INFO - 📋 Total tasks: 5, Queues: [1, 2, 3]
+2025-12-04 00:56:57,764 - INFO -    Queue 1: 2 tasks
+2025-12-04 00:56:57,764 - INFO -    Queue 2: 2 tasks
+2025-12-04 00:56:57,764 - INFO -    Queue 3: 1 tasks
+2025-12-04 00:56:57,886 - INFO - 🏁 Starting GPU competition scheduler
+2025-12-04 00:56:57,886 - INFO - ============================================================
+2025-12-04 00:56:57,886 - INFO - 📊 Tasks: Pending=5, Running=0, Completed=0, Failed=0
+2025-12-04 00:56:57,886 - INFO -    Queue 1: 🟢 IDLE, Pending=2, Completed=0
+2025-12-04 00:56:57,886 - INFO -    Queue 2: 🟢 IDLE, Pending=2, Completed=0
+2025-12-04 00:56:57,886 - INFO -    Queue 3: 🟢 IDLE, Pending=1, Completed=0
+2025-12-04 00:56:57,886 - INFO - ============================================================
+2025-12-04 00:56:57,886 - INFO - 🔧 Starting 3 queues with 3 workers
+2025-12-04 00:56:57,888 - INFO - 🚀 Queue 1: Starting with 2 tasks
+2025-12-04 00:56:57,888 - INFO - 🚀 Queue 2: Starting with 2 tasks
+2025-12-04 00:56:57,888 - INFO - 🚀 Queue 3: Starting with 1 tasks
+2025-12-04 00:56:59,702 - INFO - 🔍 发现 4 个候选GPU: [4, 5, 8, 9]，启动智能选择...
+2025-12-04 00:56:59,702 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 00:57:08,948 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=13.7%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 00:57:08,948 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 00:57:08,948 - INFO - GPU 8 [节省显存模式]: free=8.12GB, used=39.28GB, util=27.0%, mem_util=81.86%, score=(6.6470, 8.1201)
+2025-12-04 00:57:08,948 - INFO - GPU 9 [节省显存模式]: free=45.67GB, used=1.74GB, util=0.0%, mem_util=3.62%, score=(1.6541, 45.6650)
+2025-12-04 00:57:08,948 - INFO - ✅ 选择GPU 9: free=45.67GB, util=0.0%
+2025-12-04 00:57:08,948 - INFO - 🔒 GPU 9 acquired by queue 1
+2025-12-04 00:57:08,949 - INFO - 🎯 Queue 1: Executing task 1/2 on GPU 9 (retry=0)
+2025-12-04 00:57:08,967 - INFO - 🚀 Starting task (Queue 1, retry=0) on GPU 9
+2025-12-04 00:57:08,967 - INFO -    [1/1] [GPU 9] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 00:57:10,773 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 8]，启动智能选择...
+2025-12-04 00:57:10,773 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 00:57:18,536 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=12.6%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 00:57:18,536 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 00:57:18,536 - INFO - GPU 8 [节省显存模式]: free=8.12GB, used=39.28GB, util=38.5%, mem_util=81.86%, score=(6.6470, 8.1201)
+2025-12-04 00:57:18,536 - INFO - ✅ 选择GPU 8: free=8.12GB, util=38.5%
+2025-12-04 00:57:18,536 - INFO - 🔒 GPU 8 acquired by queue 2
+2025-12-04 00:57:18,536 - INFO - 🎯 Queue 2: Executing task 1/2 on GPU 8 (retry=0)
+2025-12-04 00:57:18,538 - INFO - 🚀 Starting task (Queue 2, retry=0) on GPU 8
+2025-12-04 00:57:18,538 - INFO -    [1/1] [GPU 8] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 00:57:21,402 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 22s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.6GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.4GB) | GPU8: 🔴 (8.1GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:57:27,563 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 28s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.5GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.4GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:57:33,744 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 34s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.5GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.6GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:57:39,863 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 40s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (27.7GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.6GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:57:45,772 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 46s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.6GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.6GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:57:51,803 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 52s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (15.3GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.4GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:57:57,857 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 58s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.5GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.4GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:58:03,783 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 64s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.4GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:58:09,935 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 70s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.6GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.6GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:58:15,953 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 77s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (14.9GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.4GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (45.4GB)
+2025-12-04 00:58:16,611 - INFO - ✅ Task (Queue 1) completed successfully
+2025-12-04 00:58:16,611 - INFO - 🔓 GPU 9 released by queue 1
+2025-12-04 00:58:18,345 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 9]，启动智能选择...
+2025-12-04 00:58:18,346 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 00:58:25,625 - INFO - ✅ Task (Queue 2) completed successfully
+2025-12-04 00:58:26,069 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=12.7%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 00:58:26,070 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 00:58:26,070 - INFO - GPU 9 [节省显存模式]: free=45.67GB, used=1.74GB, util=0.0%, mem_util=3.62%, score=(1.6541, 45.6650)
+2025-12-04 00:58:26,070 - INFO - ✅ 选择GPU 9: free=45.67GB, util=0.0%
+2025-12-04 00:58:26,070 - INFO - 🔒 GPU 9 acquired by queue 1
+2025-12-04 00:58:26,070 - INFO - 🎯 Queue 1: Executing task 2/2 on GPU 9 (retry=0)
+2025-12-04 00:58:26,072 - INFO - 🚀 Starting task (Queue 1, retry=0) on GPU 9
+2025-12-04 00:58:26,072 - INFO -    [1/1] [GPU 9] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 00:58:27,455 - INFO - 🔓 GPU 8 released by queue 2
+2025-12-04 00:58:29,313 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 8]，启动智能选择...
+2025-12-04 00:58:29,314 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 00:58:29,453 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 7/8 GPUs, elapsed 90s) - GPU0: 🔴 (13.5GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (14.4GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.4GB) | GPU8: 🟢 (8.1GB) | GPU9: 🔴 (45.7GB)
+2025-12-04 00:58:37,060 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=21.7%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 00:58:37,061 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 00:58:37,061 - INFO - GPU 8 [节省显存模式]: free=8.12GB, used=39.28GB, util=14.5%, mem_util=81.86%, score=(6.6470, 8.1201)
+2025-12-04 00:58:37,061 - INFO - ✅ 选择GPU 8: free=8.12GB, util=14.5%
+2025-12-04 00:58:37,061 - INFO - 🔒 GPU 8 acquired by queue 2
+2025-12-04 00:58:37,061 - INFO - 🎯 Queue 2: Executing task 2/2 on GPU 8 (retry=0)
+2025-12-04 00:58:37,063 - INFO - 🚀 Starting task (Queue 2, retry=0) on GPU 8
+2025-12-04 00:58:37,064 - INFO -    [1/1] [GPU 8] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 00:58:40,267 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 101s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (10.9GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (8.1GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:58:46,209 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 107s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (10.9GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.1GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:58:52,512 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 113s) - GPU0: 🔴 (13.5GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.3GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.6GB) | GPU7: 🔴 (20.1GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:58:58,532 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 119s) - GPU0: 🔴 (13.5GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.0GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:59:04,603 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 125s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.6GB) | GPU3: 🔴 (18.5GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.6GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:59:10,812 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 131s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.0GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (5.4GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.6GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:59:16,944 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 137s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (5.4GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.5GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:59:23,112 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 144s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.2GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.7GB) | GPU7: 🔴 (20.4GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:59:29,364 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 8/8 GPUs, elapsed 150s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.8GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.6GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🔴 (44.9GB)
+2025-12-04 00:59:32,918 - INFO - ✅ Task (Queue 1) completed successfully
+2025-12-04 00:59:34,153 - INFO - 🔓 GPU 9 released by queue 1
+2025-12-04 00:59:34,169 - INFO - 🏁 Queue 1: Finished. Completed 2/2 tasks
+2025-12-04 00:59:34,216 - INFO - ✅ Queue 1 completed
+2025-12-04 00:59:35,771 - INFO - ⏳ Queue 3: Waiting for GPU (1GB required, using 7/8 GPUs, elapsed 156s) - GPU0: 🔴 (13.4GB) | GPU1: 🔴 (28.1GB) | GPU2: 🔴 (22.5GB) | GPU3: 🔴 (18.6GB) | GPU4: 🟢 (21.6GB) | GPU5: 🟢 (8.6GB) | GPU6: 🔴 (29.6GB) | GPU7: 🔴 (20.3GB) | GPU8: 🔴 (7.3GB) | GPU9: 🟢 (45.7GB)
+2025-12-04 00:59:40,321 - INFO - 🔍 发现 3 个候选GPU: [4, 5, 9]，启动智能选择...
+2025-12-04 00:59:40,321 - INFO - 🔍 开始GPU采样: 30次, 间隔0.1秒, 总时长3.0秒
+2025-12-04 00:59:44,116 - INFO - ✅ Task (Queue 2) completed successfully
+2025-12-04 00:59:47,963 - INFO - GPU 4 [节省显存模式]: free=21.60GB, used=25.81GB, util=13.1%, mem_util=53.78%, score=(11.6140, 21.5967)
+2025-12-04 00:59:47,965 - INFO - GPU 5 [节省显存模式]: free=8.59GB, used=38.81GB, util=0.0%, mem_util=80.88%, score=(6.9469, 8.5889)
+2025-12-04 00:59:47,965 - INFO - GPU 9 [节省显存模式]: free=45.67GB, used=1.74GB, util=0.0%, mem_util=3.62%, score=(1.6541, 45.6650)
+2025-12-04 00:59:47,965 - INFO - ✅ 选择GPU 9: free=45.67GB, util=0.0%
+2025-12-04 00:59:47,965 - INFO - 🔒 GPU 9 acquired by queue 3
+2025-12-04 00:59:47,965 - INFO - 🎯 Queue 3: Executing task 1/1 on GPU 9 (retry=0)
+2025-12-04 00:59:47,967 - INFO - 🚀 Starting task (Queue 3, retry=0) on GPU 9
+2025-12-04 00:59:47,967 - INFO -    [1/1] [GPU 9] conda activate finer_dynamic && python /home/hdl/project/fgvr_test_new/scripts/c...
+2025-12-04 00:59:47,968 - INFO - 🔓 GPU 8 released by queue 2
+2025-12-04 00:59:47,970 - INFO - 🏁 Queue 2: Finished. Completed 2/2 tasks
+2025-12-04 00:59:47,971 - INFO - ✅ Queue 2 completed
+2025-12-04 01:00:54,592 - INFO - ✅ Task (Queue 3) completed successfully
+2025-12-04 01:00:54,592 - INFO - 🔓 GPU 9 released by queue 3
+2025-12-04 01:00:54,594 - INFO - 🏁 Queue 3: Finished. Completed 1/1 tasks
+2025-12-04 01:00:54,595 - INFO - ✅ Queue 3 completed
+2025-12-04 01:00:54,596 - INFO - ============================================================
+2025-12-04 01:00:54,596 - INFO - 📊 Tasks: Pending=0, Running=0, Completed=5, Failed=0
+2025-12-04 01:00:54,596 - INFO -    Queue 1: 🟢 IDLE, Pending=0, Completed=2
+2025-12-04 01:00:54,596 - INFO -    Queue 2: 🟢 IDLE, Pending=0, Completed=2
+2025-12-04 01:00:54,596 - INFO -    Queue 3: 🟢 IDLE, Pending=0, Completed=1
+2025-12-04 01:00:54,596 - INFO - ============================================================
+2025-12-04 01:00:54,596 - INFO - 🎉 All queues finished!

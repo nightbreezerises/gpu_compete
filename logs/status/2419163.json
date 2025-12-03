@@ -1,10 +1,10 @@
 {
-  "pid": 3464354,
+  "pid": 2419163,
   "mode": "single",
   "config_index": 0,
   "config_file": "/home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command/command_gpu.txt",
   "state": "running",
-  "started_at": "2025-12-03T04:39:50.262042",
+  "started_at": "2025-12-04T01:06:09.483691",
   "finished_at": null,
   "total_tasks": 5,
   "pending_tasks": 2,
@@ -14,7 +14,14 @@
   "gpus_used": [
     0,
     1,
-    2
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
   ],
   "gpus_available": [
     0,
@@ -39,7 +46,7 @@
       "completed_tasks": 0,
       "failed_tasks": 0,
       "current_task": "任务 1/2 失败，准备重试",
-      "current_gpu": 1,
+      "current_gpu": 9,
       "last_error": "exit_code_1",
       "processes": [
         {
@@ -50,11 +57,11 @@
           "memory_gb": 1,
           "gpu_count": 1,
           "status": "retrying",
-          "current_gpu": 1,
+          "current_gpu": 9,
           "gpus": [],
-          "retry_count": 2,
+          "retry_count": 3,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-03T04:40:12.851898",
+          "started_at": "2025-12-04T01:07:22.881670",
           "finished_at": null
         },
         {
@@ -83,7 +90,7 @@
       "completed_tasks": 0,
       "failed_tasks": 0,
       "current_task": "任务 1/2 失败，准备重试",
-      "current_gpu": 0,
+      "current_gpu": 8,
       "last_error": "exit_code_1",
       "processes": [
         {
@@ -94,11 +101,11 @@
           "memory_gb": 1,
           "gpu_count": 1,
           "status": "retrying",
-          "current_gpu": 0,
+          "current_gpu": 8,
           "gpus": [],
-          "retry_count": 2,
+          "retry_count": 3,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-03T04:40:17.877781",
+          "started_at": "2025-12-04T01:07:31.869041",
           "finished_at": null
         },
         {
@@ -127,7 +134,7 @@
       "completed_tasks": 0,
       "failed_tasks": 0,
       "current_task": "任务 1/1 失败，准备重试",
-      "current_gpu": 2,
+      "current_gpu": 5,
       "last_error": "exit_code_1",
       "processes": [
         {
@@ -138,11 +145,11 @@
           "memory_gb": 1,
           "gpu_count": 1,
           "status": "retrying",
-          "current_gpu": 2,
+          "current_gpu": 5,
           "gpus": [],
-          "retry_count": 2,
+          "retry_count": 3,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-03T04:40:17.974943",
+          "started_at": "2025-12-04T01:07:39.385773",
           "finished_at": null
         }
       ]

@@ -139,37 +139,23 @@ class GPUCompetitor:
         # 初始化日志
         self._setup_logging()
         
-        # 初始化 GPU 列表
+        # 初始化 GPU 列表（动态预留：可以在所有卡上运行）
         if use_all_gpus:
             all_gpus = GPUMonitor.detect_gpus()
         else:
             all_gpus = compete_gpus
         
-        # 计算可用 GPU 数量：min(max_gpu, max(min_gpu, available_gpus - gpu_left))
-        available_after_reservation = len(all_gpus) - gpu_left if len(all_gpus) > gpu_left else 0
-        min_required = max(min_gpu, available_after_reservation)
-        target_gpu_count = min(max_gpu, min_required)
-        
-        # 确保不超过实际可用的 GPU 数量
-        target_gpu_count = min(target_gpu_count, len(all_gpus))
-        
-        # 应用 GPU 分配逻辑
-        if target_gpu_count < len(all_gpus):
-            # 从前面取 target_gpu_count 张卡
-            self.gpus = all_gpus[:target_gpu_count]
-            reserved_gpus = all_gpus[target_gpu_count:]
-            # 记录预留的 GPU（包括 gpu_left 和多余的）
-            logging.info(f"🖥️ Using {len(self.gpus)}/{len(all_gpus)} GPUs: {self.gpus}")
-            logging.info(f"🖥️ Reserved GPUs: {reserved_gpus} (gpu_left={gpu_left}, excess={len(reserved_gpus)-gpu_left})")
-        else:
-            self.gpus = all_gpus
-            logging.info(f"🖥️ Using all {len(self.gpus)} GPUs: {self.gpus}")
+        # 动态预留模式：所有GPU都可以使用，运行时动态计算可用配额
+        self.gpus = all_gpus
+        self.total_gpus = len(all_gpus)
         
         # 保存配置到实例变量
         self.gpu_left = gpu_left
         self.min_gpu = min_gpu
         self.max_gpu = max_gpu
-        self.total_gpus = len(all_gpus)
+        
+        logging.info(f"🖥️ Total GPUs available: {self.gpus}")
+        logging.info(f"🖥️ Dynamic reservation config: gpu_left={gpu_left}, min_gpu={min_gpu}, max_gpu={max_gpu}")
         
         # 线程同步
         self.gpu_lock = threading.Lock()  # GPU 分配锁
@@ -212,6 +198,7 @@ class GPUCompetitor:
             force=True
         )
         logging.info(f"📝 Log file: {log_file}")
+        logging.info(f"📄 Command file: {commands_path}")
     
     def _get_next_log_file(self) -> str:
         """获取下一个日志文件名"""
@@ -249,20 +236,69 @@ class GPUCompetitor:
             # 为每个队列创建锁
             self.queue_locks[qid] = threading.Lock()
     
+    def _get_current_user_gpu_count(self) -> int:
+        """获取当前用户正在使用的GPU数量（调度器内部占用 + 外部进程占用）"""
+        user_gpu_count = 0
+        for gpu_id in self.gpus:
+            # 检查调度器内部占用
+            if gpu_id in self.occupied_gpus:
+                user_gpu_count += 1
+                continue
+            # 检查外部用户进程
+            user_procs = GPUMonitor.get_user_processes_on_gpu(gpu_id)
+            if user_procs:
+                user_gpu_count += 1
+        return user_gpu_count
+    
+    def _get_max_allowed_gpus(self) -> int:
+        """动态计算当前允许使用的最大GPU数量
+        
+        公式：min(max_gpu, max(min_gpu, available_gpus - gpu_left))
+        其中 available_gpus 是当前显存充足的GPU数量（不考虑用户占用）
+        """
+        # 统计显存充足的GPU数量（available_gpus）
+        available_gpus = 0
+        for gpu_id in self.gpus:
+            available_mem = GPUMonitor.get_available_memory(gpu_id)
+            if available_mem >= 1:  # 至少1GB可用显存才算可用
+                available_gpus += 1
+        
+        # 计算允许使用的最大GPU数量
+        max_allowed = min(self.max_gpu, max(self.min_gpu, available_gpus - self.gpu_left))
+        return max(0, max_allowed)
+    
+    def _can_acquire_more_gpus(self, count: int = 1) -> bool:
+        """检查是否可以再获取更多GPU
+        
+        Args:
+            count: 需要获取的GPU数量
+        """
+        current_used = self._get_current_user_gpu_count()
+        max_allowed = self._get_max_allowed_gpus()
+        return current_used + count <= max_allowed
+
     def find_available_gpu(self, required_memory: int, queue_id: int = -1) -> Optional[int]:
         """查找可用的 GPU
         
         条件：
-        1. 有足够的显存
-        2. 非极限模式下：
+        1. 动态预留检查：当前用户使用的GPU数量未超过允许的最大值
+        2. 有足够的显存
+        3. 非极限模式下：
            a. 调度器内部没有其他任务正在使用该GPU
            b. 当前用户没有其他 Python 进程在该 GPU 上（外部进程）
-        3. 多个可用GPU时，使用智能选择策略
+        4. 多个可用GPU时，使用智能选择策略
         
         Args:
             required_memory: 需要的显存 (GB)
             queue_id: 请求GPU的队列ID（用于日志）
         """
+        # 动态预留检查：是否还能获取更多GPU
+        if not self._can_acquire_more_gpus(1):
+            current_used = self._get_current_user_gpu_count()
+            max_allowed = self._get_max_allowed_gpus()
+            logging.debug(f"Dynamic reservation limit reached: using {current_used}/{max_allowed} GPUs")
+            return None
+        
         # 第一步：筛选出所有满足条件的GPU
         candidate_gpus = []
         for gpu_id in self.gpus:
@@ -289,6 +325,20 @@ class GPUCompetitor:
             candidate_gpus.append(gpu_id)
         
         if not candidate_gpus:
+            # 输出详细的GPU不可用原因（用于调试）
+            if logging.getLogger().isEnabledFor(logging.DEBUG):
+                for gpu_id in self.gpus:
+                    available = GPUMonitor.get_available_memory(gpu_id)
+                    is_occupied = gpu_id in self.occupied_gpus if not maximize_resource_utilization else False
+                    user_procs = GPUMonitor.get_user_processes_on_gpu(gpu_id) if not maximize_resource_utilization else []
+                    reasons = []
+                    if is_occupied:
+                        reasons.append(f"occupied by queue {self.occupied_gpus[gpu_id]}")
+                    if user_procs:
+                        reasons.append(f"external processes: {user_procs}")
+                    if available < required_memory:
+                        reasons.append(f"insufficient memory ({available:.1f}GB < {required_memory}GB)")
+                    logging.debug(f"GPU {gpu_id} unavailable: {', '.join(reasons) if reasons else 'unknown'}")
             return None
         
         # 第二步：如果只有一个候选GPU，直接返回
@@ -610,6 +660,7 @@ class GPUCompetitor:
             可用的 GPU ID，如果超时返回 None
         """
         start_time = time.time()
+        last_log_time = 0
         
         while time.time() - start_time < timeout:
             if not self.running:
@@ -623,7 +674,29 @@ class GPUCompetitor:
                     logging.info(f"🔒 GPU {gpu_id} acquired by queue {queue_id}")
                     return gpu_id
             
-            # 没有可用 GPU，等待后重试
+            # 没有可用 GPU，每check_time秒输出一次等待日志
+            elapsed = time.time() - start_time
+            if time.time() - last_log_time >= check_time:
+                # 动态预留状态
+                current_used = self._get_current_user_gpu_count()
+                max_allowed = self._get_max_allowed_gpus()
+                
+                # 检查所有GPU的状态，输出详细信息
+                gpu_status = []
+                for gpu_id in self.gpus:
+                    available = GPUMonitor.get_available_memory(gpu_id)
+                    is_occupied = gpu_id in self.occupied_gpus
+                    user_procs = GPUMonitor.get_user_processes_on_gpu(gpu_id) if not maximize_resource_utilization else []
+                    status = "🔴" if (is_occupied or user_procs) else "🟢"
+                    gpu_status.append(f"GPU{gpu_id}: {status} ({available:.1f}GB)")
+                
+                logging.info(
+                    f"⏳ Queue {queue_id}: Waiting for GPU ({required_memory}GB required, "
+                    f"using {current_used}/{max_allowed} GPUs, elapsed {elapsed:.0f}s) - {' | '.join(gpu_status)}"
+                )
+                last_log_time = time.time()
+            
+            # 等待后重试
             time.sleep(check_time)
         
         logging.warning(f"⏰ Timeout waiting for GPU with {required_memory}GB memory")

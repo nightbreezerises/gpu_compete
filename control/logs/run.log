@@ -1,49 +1,92 @@
-2025-12-03 04:39:14,245 - __main__ - INFO - 配置编辑器启动 - 目标文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/control/../config/gpu_manage.yaml
-2025-12-03 04:39:14,245 - __main__ - INFO - 服务端口: 29214, 绑定地址: 0.0.0.0
-2025-12-03 04:39:14,245 - utils.manage_port - INFO - 使用配置端口: 29214
+2025-12-04 01:05:47,858 - __main__ - INFO - 配置编辑器启动 - 目标文件: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/control/../config/gpu_manage.yaml
+2025-12-04 01:05:47,858 - __main__ - INFO - 服务端口: 29214, 绑定地址: 0.0.0.0
+2025-12-04 01:05:47,858 - utils.manage_port - INFO - 使用配置端口: 29214
 /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/control/src/main.py:112: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
   class ConfigModel(BaseModel):
 /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/env/lib/python3.13/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
   warnings.warn(message, UserWarning)
 ✅ 端口 29214 可用，服务启动中...
-2025-12-03 04:39:14,288 - utils.manage_port - INFO - 进程信息已注册: PID=3462103, Port=29214, URL=http://10.82.1.223:29214
-2025-12-03 04:39:14,289 - asyncio - DEBUG - Using selector: EpollSelector
-INFO:     Started server process [3462103]
+2025-12-04 01:05:47,916 - utils.manage_port - INFO - 进程信息已注册: PID=2417920, Port=29214, URL=http://10.82.1.223:29214
+2025-12-04 01:05:47,918 - asyncio - DEBUG - Using selector: EpollSelector
+INFO:     Started server process [2417920]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:29214 (Press CTRL+C to quit)
-INFO:     10.87.5.130:60866 - "GET /ui/setting HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60866 - "GET /ui/assets/index-3SXUuRGI.js HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60868 - "GET /ui/assets/index-Byggfn1b.css HTTP/1.1" 200 OK
-2025-12-03 04:39:40,318 - __main__ - INFO - 收到获取系统设置请求
-2025-12-03 04:39:40,318 - column.setting - INFO - 读取系统设置: /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/config/control_setting.yaml
-2025-12-03 04:39:40,318 - __main__ - INFO - 收到认证检查请求
-INFO:     10.87.5.130:60868 - "GET /api/auth/check HTTP/1.1" 200 OK
-2025-12-03 04:39:40,323 - column.setting - INFO - 成功读取设置，包含 7 个顶级键
-INFO:     10.87.5.130:60866 - "GET /api/settings HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60871 - "GET /ui/images/gpu.jpg HTTP/1.1" 200 OK
-2025-12-03 04:39:42,759 - __main__ - INFO - 收到登录请求
-INFO:     10.87.5.130:60894 - "POST /api/auth/login HTTP/1.1" 200 OK
-2025-12-03 04:39:47,296 - __main__ - INFO - 收到登录请求
-INFO:     10.87.5.130:60894 - "POST /api/auth/login HTTP/1.1" 200 OK
-2025-12-03 04:39:48,556 - __main__ - INFO - 收到获取所有配置请求，模式: single
-2025-12-03 04:39:48,557 - column.config_command - INFO - 解析完成，共 3 个队列，5 个进程
-2025-12-03 04:39:48,557 - column.config_command - INFO - 解析完成，共 0 个队列，0 个进程
-INFO:     10.87.5.130:60933 - "GET /api/commands/single/all HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60936 - "GET /api/scheduler/status HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60937 - "GET /api/log/bindings HTTP/1.1" 200 OK
-2025-12-03 04:39:50,068 - __main__ - INFO - 收到启动调度器请求，模式: single, 配置索引: 0
-2025-12-03 04:39:50,069 - utils.run_app - INFO - 启动调度器: python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/app/main_gpu.py --command-file /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command/command_gpu.txt --config-index 0
-2025-12-03 04:39:50,071 - utils.run_app - INFO - 调度器已启动，PID: 3464354
-INFO:     10.87.5.130:60936 - "POST /api/scheduler/single/start?config_index=0 HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60936 - "GET /api/scheduler/status HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60937 - "GET /api/log/bindings HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60936 - "GET /api/scheduler/running HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60975 - "GET /api/scheduler/running HTTP/1.1" 200 OK
-INFO:     10.87.5.130:60975 - "GET /api/scheduler/running HTTP/1.1" 200 OK
-INFO:     10.87.5.130:61020 - "GET /api/scheduler/running HTTP/1.1" 200 OK
-INFO:     10.87.5.130:61041 - "GET /api/scheduler/running HTTP/1.1" 200 OK
-INFO:     10.87.5.130:61041 - "GET /api/scheduler/running HTTP/1.1" 200 OK
-INFO:     10.87.5.130:61085 - "GET /api/scheduler/running HTTP/1.1" 200 OK
-INFO:     10.87.5.130:61085 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:64024 - "GET / HTTP/1.1" 307 Temporary Redirect
+INFO:     10.87.166.88:64024 - "GET /ui/ HTTP/1.1" 200 OK
+INFO:     10.87.166.88:64024 - "GET /ui/assets/index-3SXUuRGI.js HTTP/1.1" 200 OK
+INFO:     10.87.166.88:50791 - "GET /ui/assets/index-Byggfn1b.css HTTP/1.1" 200 OK
+INFO:     10.87.166.88:64024 - "GET /ui/images/gpu.jpg HTTP/1.1" 200 OK
+2025-12-04 01:05:55,776 - __main__ - INFO - 收到认证检查请求
+2025-12-04 01:05:55,777 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:50791 - "GET /api/auth/check HTTP/1.1" 200 OK
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:05:56,781 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:05:57,782 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:05:58,790 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:00,128 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:01,137 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:02,139 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:03,130 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:04,130 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:05,095 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:05,780 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:06,404 - __main__ - INFO - 收到登录请求
+INFO:     10.87.166.88:64024 - "POST /api/auth/login HTTP/1.1" 200 OK
+2025-12-04 01:06:06,779 - __main__ - INFO - 收到获取 GPU 信息请求
+INFO:     10.87.166.88:64024 - "GET /api/gpu HTTP/1.1" 200 OK
+2025-12-04 01:06:07,486 - __main__ - INFO - 收到获取所有配置请求，模式: single
+2025-12-04 01:06:07,489 - column.config_command - INFO - 解析完成，共 3 个队列，5 个进程
+INFO:     10.87.166.88:56667 - "GET /api/scheduler/status HTTP/1.1" 200 OK
+2025-12-04 01:06:07,490 - column.config_command - INFO - 解析完成，共 0 个队列，0 个进程
+INFO:     10.87.166.88:64024 - "GET /api/commands/single/all HTTP/1.1" 200 OK
+INFO:     10.87.166.88:56667 - "GET /api/log/bindings HTTP/1.1" 200 OK
+2025-12-04 01:06:09,256 - __main__ - INFO - 收到启动调度器请求，模式: single, 配置索引: 0
+2025-12-04 01:06:09,257 - utils.run_app - INFO - 启动调度器: python /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/app/main_gpu.py --command-file /home/hdl/project/fgvr_test_new/scripts/compete_gpu_retry/command/command_gpu.txt --config-index 0
+2025-12-04 01:06:09,261 - utils.run_app - INFO - 调度器已启动，PID: 2419163
+INFO:     10.87.166.88:56667 - "POST /api/scheduler/single/start?config_index=0 HTTP/1.1" 200 OK
+INFO:     10.87.166.88:56667 - "GET /api/scheduler/status HTTP/1.1" 200 OK
+INFO:     10.87.166.88:64024 - "GET /api/log/bindings HTTP/1.1" 200 OK
+INFO:     10.87.166.88:56667 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:56667 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:56667 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:56667 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "POST /api/scheduler/stop/2211311 HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
+INFO:     10.87.166.88:55933 - "GET /api/scheduler/running HTTP/1.1" 200 OK
