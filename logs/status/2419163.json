@@ -8,7 +8,7 @@
   "finished_at": null,
   "total_tasks": 5,
   "pending_tasks": 2,
-  "running_tasks": 0,
+  "running_tasks": 1,
   "completed_tasks": 0,
   "failed_tasks": 0,
   "gpus_used": [
@@ -35,17 +35,19 @@
     8,
     9
   ],
-  "gpu_assignments": {},
+  "gpu_assignments": {
+    "9": 1
+  },
   "queues": {
     "1": {
       "id": 1,
       "status": "running",
       "total_tasks": 2,
       "pending_tasks": 1,
-      "running_tasks": 0,
+      "running_tasks": 1,
       "completed_tasks": 0,
       "failed_tasks": 0,
-      "current_task": "任务 1/2 失败，准备重试",
+      "current_task": "任务 1/2: conda activate finer_dynamic && python /home/hdl/p...",
       "current_gpu": 9,
       "last_error": "exit_code_1",
       "processes": [
@@ -56,12 +58,12 @@
           ],
           "memory_gb": 1,
           "gpu_count": 1,
-          "status": "retrying",
+          "status": "running",
           "current_gpu": 9,
           "gpus": [],
-          "retry_count": 9,
+          "retry_count": 11,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:29:30.521453",
+          "started_at": "2025-12-04T01:40:33.919526",
           "finished_at": null
         },
         {
@@ -90,7 +92,7 @@
       "completed_tasks": 0,
       "failed_tasks": 0,
       "current_task": "任务 1/2 失败，准备重试",
-      "current_gpu": 8,
+      "current_gpu": 9,
       "last_error": "exit_code_1",
       "processes": [
         {
@@ -101,11 +103,11 @@
           "memory_gb": 1,
           "gpu_count": 1,
           "status": "retrying",
-          "current_gpu": 8,
+          "current_gpu": 9,
           "gpus": [],
-          "retry_count": 9,
+          "retry_count": 11,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:29:39.170071",
+          "started_at": "2025-12-04T01:40:16.721779",
           "finished_at": null
         },
         {
@@ -134,7 +136,7 @@
       "completed_tasks": 0,
       "failed_tasks": 0,
       "current_task": "任务 1/1 失败，准备重试",
-      "current_gpu": 9,
+      "current_gpu": 8,
       "last_error": "exit_code_1",
       "processes": [
         {
@@ -145,11 +147,11 @@
           "memory_gb": 1,
           "gpu_count": 1,
           "status": "retrying",
-          "current_gpu": 9,
+          "current_gpu": 8,
           "gpus": [],
-          "retry_count": 9,
+          "retry_count": 11,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:29:48.223525",
+          "started_at": "2025-12-04T01:40:25.390563",
           "finished_at": null
         }
       ]
@@ -157,4 +159,4 @@
   },
   "last_log_lines": [],
   "last_error": null
-}
+}}

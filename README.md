@@ -3,14 +3,32 @@
 一个用于GPU任务调度的管理系统，支持单卡和多卡调度，包含Web控制界面。
 
 ## 📁 项目结构
+ 
+- **调度器核心应用**: `./app/`
+  - `main_gpu.py`: 单GPU调度器
+  - `main_gpus.py`: 多GPU调度器
+  - `utils/`: 工具模块（GPU监控、GPU选择策略、命令解析、配置管理、重试机制、状态写入等）
 
-- **调度器代码**: `./app/`
-- **配置文件**: `./config/gpu_manage.yaml`
-- **命令文件**: 
-  - 单卡: `./command_gpu.txt`
-  - 多卡: `./command_gpus.txt`
-- **前端代码**: `./control/`
-- **前端配置**: `./config/control_setting.yaml`
+- **命令配置目录**: `./command/`
+  - `command_gpu.txt`, `command_gpu_1.txt`, `command_gpu_2.txt`, ...: 单GPU任务配置
+  - `command_gpus.txt`, `command_gpus_1.txt`, `command_gpus_2.txt`, ...: 多GPU任务配置
+
+- **配置文件目录**: `./config/`
+  - `gpu_manage.yaml`: 调度器配置
+  - `control_setting.yaml`: 控制台配置（包含登录密码等）
+
+- **控制台（Web UI）**: `./control/`
+  - `run.sh` / `shut_down.sh`: 控制台启动与关闭脚本
+  - `logs/`: 控制台日志
+  - `src/`: 控制台后端与前端集成代码
+
+- **日志目录**: `./logs/`
+  - `compete_gpu*.log`, `compete_gpus*.log`, `scheduler_*.log` 等调度器运行日志
+  - `state/{pid}.json`: 调度器状态文件
+
+- **帮助文档**: `./help/`（项目架构、后端逻辑、控制台说明等）
+
+- **工具脚本**: `./test_gpu_memory.py`（GPU 显存测试脚本）
 
 ## 🚀 使用方法
 
