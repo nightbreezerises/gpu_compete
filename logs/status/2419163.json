@@ -59,9 +59,9 @@
           "status": "retrying",
           "current_gpu": 9,
           "gpus": [],
-          "retry_count": 6,
+          "retry_count": 9,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:18:27.307476",
+          "started_at": "2025-12-04T01:29:30.521453",
           "finished_at": null
         },
         {
@@ -103,9 +103,9 @@
           "status": "retrying",
           "current_gpu": 8,
           "gpus": [],
-          "retry_count": 6,
+          "retry_count": 9,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:18:36.050104",
+          "started_at": "2025-12-04T01:29:39.170071",
           "finished_at": null
         },
         {
@@ -147,9 +147,9 @@
           "status": "retrying",
           "current_gpu": 9,
           "gpus": [],
-          "retry_count": 6,
+          "retry_count": 9,
           "last_error": "exit_code_1",
-          "started_at": "2025-12-04T01:18:45.063715",
+          "started_at": "2025-12-04T01:29:48.223525",
           "finished_at": null
         }
       ]
