@@ -10,8 +10,8 @@
   - `utils/`: 工具模块（GPU监控、GPU选择策略、命令解析、配置管理、重试机制、状态写入等）
 
 - **命令配置目录**: `./command/`
-  - `command_gpu.txt`, `command_gpu_1.txt`, `command_gpu_2.txt`, ...: 单GPU任务配置
-  - `command_gpus.txt`, `command_gpus_1.txt`, `command_gpus_2.txt`, ...: 多GPU任务配置
+  - `command_gpu.txt`: 单GPU任务配置（默认配置）
+  - `command_gpus.txt`: 多GPU任务配置（默认配置）
 
 - **配置文件目录**: `./config/`
   - `gpu_manage.yaml`: 调度器配置
